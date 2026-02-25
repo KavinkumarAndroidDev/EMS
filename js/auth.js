@@ -83,7 +83,7 @@ export function setupLoginForm() {
 
     const savedEmail = localStorage.getItem('rememberedEmail');
     if (savedEmail) {
-        const emailInput = form.querySelector('input[type="email"]');
+        const emailInput = document.getElementById('email');
         const rememberMe = document.getElementById('rememberMe');
         if (emailInput) emailInput.value = savedEmail;
         if (rememberMe) rememberMe.checked = true;
@@ -95,12 +95,12 @@ export function setupLoginForm() {
         form.classList.add('was-validated');
 
         if (form.checkValidity()) {
-            const emailInput = form.querySelector('input[type="email"]');
-            const passwordInput = form.querySelector('input[type="password"]');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
             const rememberMe = document.getElementById('rememberMe');
 
-            const email = emailInput.value;
-            const password = passwordInput.value;
+            const email = emailInput ? emailInput.value : '';
+            const password = passwordInput ? passwordInput.value : '';
             const remember = rememberMe ? rememberMe.checked : false;
 
             const success = performLogin(email, password, remember);
@@ -115,6 +115,8 @@ export function setupLoginForm() {
                 passwordInput.value = '';
                 form.classList.remove('was-validated');
             }
+        } else {
+            showToast('Error', 'Please fill in all required fields correctly.', 'danger');
         }
     });
 }
@@ -161,6 +163,8 @@ export function setupSignupForm() {
             setTimeout(() => {
                 window.location.href = 'login.html';
             }, 1500);
+        } else {
+            showToast('Error', 'Please fill in all required fields correctly.', 'danger');
         }
     });
 }

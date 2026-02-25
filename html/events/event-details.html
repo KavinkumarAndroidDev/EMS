@@ -28,15 +28,7 @@
                     <a href="events.html" class="btn btn-text nav-link-btn text-neutral-900">Events</a>
                     <a href="../about.html" class="btn btn-text nav-link-btn text-neutral-900">About</a>
                     <a href="../contact.html" class="btn btn-text nav-link-btn text-neutral-900">Contact</a>
-                    <div class="dropdown">
-                        <button class="btn btn-text nav-link-btn dropdown-toggle text-neutral-900"
-                            data-bs-toggle="dropdown" aria-expanded="false">Location</button>
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Coimbatore</button></li>
-                            <li><button class="dropdown-item" type="button">Chennai</button></li>
-                            <li><button class="dropdown-item" type="button">Madurai</button></li>
-                        </ul>
-                    </div>
+                    
                 </div>
 
                 <div class="header-right">
@@ -87,15 +79,13 @@
                                     <div class="caption text-neutral-400">Starts from</div>
                                     <div class="fw-bold fs-5" id="event-price">₹0</div>
                                 </div>
-                                <button class="btn btn-primary">
-                                    Book tickets <i data-lucide="arrow-right" class="btn-icon"></i>
-                                </button>
-                            </div>
-
-                            <!-- Available Tickets Breakdown (Injected via JS) -->
-                            <div class="mt-4 pt-3 border-top d-none" id="event-tickets-breakdown">
-                                <h6 class="fw-bold fs-6 mb-3">Available Tickets</h6>
-                                <!-- JS will populate available ticket classes here -->
+                                <div class="text-end">
+                                    <button id="btn-book-tickets" class="btn btn-primary d-block mb-1">
+                                        Book tickets <i data-lucide="arrow-right" class="btn-icon"></i>
+                                    </button>
+                                    <small class="text-neutral-400 fw-medium d-block text-end" id="event-ticket-count"
+                                        style="font-size:12px;"></small>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -247,6 +237,38 @@
             </div>
         </section>
 
+
+        <div class="modal fade" id="loginRequiredModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4">
+                    <div class="modal-header border-0 pb-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center pt-0 pb-4 px-4">
+                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex p-3 mb-3">
+                            <i data-lucide="lock" width="32" height="32"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Login Required</h4>
+                        <p class="text-neutral-600 mb-4">Please log in or create an account to book tickets for this
+                            event.</p>
+                        <form id="modalLoginForm" class="text-start mb-3" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label small fw-medium">Email address</label>
+                                <input type="email" class="form-control" required placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-medium">Password</label>
+                                <input type="password" class="form-control" required placeholder="••••••••">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 rounded-pill py-2">Log In</button>
+                        </form>
+                        <hr class="my-4">
+                        <p class="text-neutral-400 small mb-0">Don't have an account? <a href="../../html/signup.html"
+                                class="text-primary fw-medium text-decoration-none">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
 

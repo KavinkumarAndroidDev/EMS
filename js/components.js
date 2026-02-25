@@ -1,33 +1,33 @@
 export function injectComponents() {
-    const path = window.location.pathname;
-    const isInHtmlDir = path.includes('/html/');
-    const isInEventsDir = path.includes('/events/');
+  const path = window.location.pathname;
+  const isInHtmlDir = path.includes('/html/');
+  const isInEventsDir = path.includes('/events/');
 
-    let rootPath = './';
-    if (isInEventsDir) rootPath = '../../';
-    else if (isInHtmlDir) rootPath = '../';
+  let rootPath = './';
+  if (isInEventsDir) rootPath = '../../';
+  else if (isInHtmlDir) rootPath = '../';
 
-    const userStr = localStorage.getItem('currentUser');
-    const user = userStr ? JSON.parse(userStr) : null;
+  const userStr = localStorage.getItem('currentUser');
+  const user = userStr ? JSON.parse(userStr) : null;
 
-    injectHeader(rootPath, user);
-    injectOrganizerCTA(rootPath);
-    injectFooter(rootPath);
+  injectHeader(rootPath, user);
+  injectOrganizerCTA(rootPath);
+  injectFooter(rootPath);
 
-    if (window.lucide) lucide.createIcons();
+  if (window.lucide) lucide.createIcons();
 }
 
 function injectHeader(rootPath, user) {
-    const header = document.querySelector('.site-header');
-    if (!header) return;
+  const header = document.querySelector('.site-header');
+  if (!header) return;
 
-    let rightContent = '';
+  let rightContent = '';
 
-    if (user) {
-        const initials = user.profile.fullName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-        const firstName = user.profile.fullName.split(' ')[0];
+  if (user) {
+    const initials = user.profile.fullName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+    const firstName = user.profile.fullName.split(' ')[0];
 
-        rightContent = `
+    rightContent = `
             <a href="${rootPath}html/notifications.html" class="icon-circle btn p-0 me-2 text-decoration-none d-inline-flex align-items-center justify-content-center">
                 <i data-lucide="bell" width="20" height="20"></i>
             </a>
@@ -43,8 +43,8 @@ function injectHeader(rootPath, user) {
                 </ul>
             </div>
         `;
-    } else {
-        rightContent = `
+  } else {
+    rightContent = `
             <div id="guestState" class="auth-state">
                 <a href="${rootPath}html/login.html" class="btn btn-text">Login</a>
                 <a href="${rootPath}html/signup.html" class="btn btn-primary">
@@ -55,9 +55,9 @@ function injectHeader(rootPath, user) {
                 </a>
             </div>
         `;
-    }
+  }
 
-    header.innerHTML = `
+  header.innerHTML = `
     <div class="container-custom">
       <div class="header-inner">
         <div class="header-left">
@@ -70,14 +70,6 @@ function injectHeader(rootPath, user) {
           <a href="${rootPath}html/events/events.html" class="btn btn-text nav-link-btn text-neutral-900">Events</a>
           <a href="${rootPath}html/about.html" class="btn btn-text nav-link-btn text-neutral-900">About</a>
           <a href="${rootPath}html/contact.html" class="btn btn-text nav-link-btn text-neutral-900">Contact</a>
-          <div class="dropdown">
-            <button class="btn btn-text nav-link-btn dropdown-toggle text-neutral-900" data-bs-toggle="dropdown" aria-expanded="false">Location</button>
-            <ul class="dropdown-menu">
-              <li><button class="dropdown-item" type="button">Coimbatore</button></li>
-              <li><button class="dropdown-item" type="button">Chennai</button></li>
-              <li><button class="dropdown-item" type="button">Madurai</button></li>
-            </ul>
-          </div>
         </div>
         <div class="header-right">
             ${rightContent}
@@ -85,23 +77,23 @@ function injectHeader(rootPath, user) {
       </div>
     </div>`;
 
-    if (user) {
-        setTimeout(() => {
-            const logoutBtn = document.getElementById('logoutBtn');
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', () => {
-                    const modalEl = document.getElementById('signOutModal');
-                    if (modalEl) new bootstrap.Modal(modalEl).show();
-                });
-            }
-        }, 0);
-    }
+  if (user) {
+    setTimeout(() => {
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          const modalEl = document.getElementById('signOutModal');
+          if (modalEl) new bootstrap.Modal(modalEl).show();
+        });
+      }
+    }, 0);
+  }
 }
 
 function injectOrganizerCTA(rootPath) {
-    const ctaSections = document.querySelectorAll('.organizercta-neutral-900');
-    ctaSections.forEach(cta => {
-        cta.innerHTML = `
+  const ctaSections = document.querySelectorAll('.organizercta-neutral-900');
+  ctaSections.forEach(cta => {
+    cta.innerHTML = `
         <div class="container-custom">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
                 <div class="d-flex align-items-center gap-3">
@@ -116,14 +108,14 @@ function injectOrganizerCTA(rootPath) {
                 </button>
             </div>
         </div>`;
-    });
+  });
 }
 
 function injectFooter(rootPath) {
-    const footer = document.querySelector('.footer-main');
-    if (!footer) return;
+  const footer = document.querySelector('.footer-main');
+  if (!footer) return;
 
-    footer.innerHTML = `
+  footer.innerHTML = `
     <div class="container-custom">
       <div class="footer-grid">
         <div>

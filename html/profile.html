@@ -112,15 +112,7 @@
                     <a href="events/events.html" class="btn btn-text nav-link-btn text-neutral-900">Events</a>
                     <a href="about.html" class="btn btn-text nav-link-btn text-neutral-900">About</a>
                     <a href="contact.html" class="btn btn-text nav-link-btn text-neutral-900">Contact</a>
-                    <div class="dropdown">
-                        <button class="btn btn-text nav-link-btn dropdown-toggle text-neutral-900"
-                            data-bs-toggle="dropdown" aria-expanded="false">Location</button>
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Coimbatore</button></li>
-                            <li><button class="dropdown-item" type="button">Chennai</button></li>
-                            <li><button class="dropdown-item" type="button">Madurai</button></li>
-                        </ul>
-                    </div>
+
                 </div>
 
                 <div class="header-right">
@@ -182,16 +174,6 @@
                             <button class="btn btn-outline-danger w-100 rounded-pill" id="profileLogoutBtn">
                                 <i data-lucide="log-out" width="18" class="me-2"></i> Sign Out
                             </button>
-                            <div
-                                class="d-flex align-items-center justify-content-between p-3 bg-white border border-neutral-100 rounded-3">
-                                <div class="d-flex align-items-center gap-2">
-                                    <i data-lucide="moon" width="18" class="text-neutral-900"></i>
-                                    <span class="small fw-medium text-neutral-900">Dark Mode</span>
-                                </div>
-                                <div class="form-check form-switch m-0">
-                                    <input class="form-check-input" type="checkbox" role="switch" id="themeToggle">
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -216,7 +198,8 @@
                                         <span class="small fw-bold text-primary" id="profile-completion-text">70%</span>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary rounded-pill">Complete Profile</button>
+                                <button class="btn btn-primary rounded-pill" id="btn-complete-profile">Complete
+                                    Profile</button>
                             </div>
                         </div>
 

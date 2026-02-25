@@ -139,8 +139,10 @@ export function initBookingPage() {
         const taxAmount = subtotalAfterDiscount * 0.18; // 18% tax
         const total = subtotalAfterDiscount + taxAmount;
 
+        const isPaymentStep = !document.getElementById('step-payment').classList.contains('d-none');
+
         if (count > 0) {
-            sticky.classList.add('visible');
+            if (!isPaymentStep) sticky.classList.add('visible');
             document.getElementById('sticky-total').textContent = `₹${total.toFixed(2)}`;
             document.getElementById('sticky-count').textContent = `${count} Ticket${count > 1 ? 's' : ''}`;
 
@@ -179,19 +181,30 @@ export function initBookingPage() {
             const codeInput = document.getElementById('discount-code').value.trim();
             if (!codeInput) return;
 
+            // Check global or mock offers
+            const mockOffers = [
+                { code: 'SAVE20', discountPercentage: 20 },
+                { code: 'EARLYBIRD', discountPercentage: 15 },
+                { code: 'FESTIVAL50', discountPercentage: 50 },
+                { code: 'WELCOME10', discountPercentage: 10 }
+            ];
+
+            let offer = null;
             if (event.pricing && event.pricing.offers) {
-                const offer = event.pricing.offers.find(o => o.code.toUpperCase() === codeInput.toUpperCase());
-                if (offer) {
-                    currentDiscount = offer.discountPercentage;
-                    showToast('Success', `Offer applied! ${currentDiscount}% off.`, 'success');
-                    updateSummary(cart, event.tickets);
-                } else {
-                    currentDiscount = 0;
-                    showToast('Invalid Code', 'The offer code entered is not valid.', 'danger');
-                    updateSummary(cart, event.tickets);
-                }
+                offer = event.pricing.offers.find(o => o.code.toUpperCase() === codeInput.toUpperCase());
+            }
+            if (!offer) {
+                offer = mockOffers.find(o => o.code.toUpperCase() === codeInput.toUpperCase());
+            }
+
+            if (offer) {
+                currentDiscount = offer.discountPercentage;
+                showToast('Success', `Offer applied! ${currentDiscount}% off.`, 'success');
+                updateSummary(cart, event.tickets);
             } else {
-                showToast('Error', 'No offers available for this event.', 'warning');
+                currentDiscount = 0;
+                showToast('Invalid Code', 'The offer code entered is not valid.', 'danger');
+                updateSummary(cart, event.tickets);
             }
         });
     }
@@ -221,6 +234,23 @@ export function initBookingPage() {
                         </div>
                     `;
                 });
+            }
+        });
+    }
+
+    // Go Back Logic
+    const goBackBtn = document.getElementById('btn-go-back');
+    if (goBackBtn) {
+        goBackBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('step-payment').classList.add('d-none');
+            document.getElementById('step-select-tickets').classList.remove('d-none');
+            document.getElementById('step2-indicator').classList.remove('active');
+            document.getElementById('step1-indicator').classList.add('active');
+
+            // Re-evaluate sticky summary visibility
+            if (Object.keys(cart).length > 0) {
+                document.getElementById('sticky-summary').classList.add('visible');
             }
         });
     }

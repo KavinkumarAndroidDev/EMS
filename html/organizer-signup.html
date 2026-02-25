@@ -14,6 +14,7 @@
       justify-content: space-between;
       margin-bottom: 2rem;
     }
+
     .stepper::before {
       content: '';
       position: absolute;
@@ -24,6 +25,7 @@
       background-color: #E5E7EB;
       z-index: 0;
     }
+
     .stepper-progress {
       position: absolute;
       top: 15px;
@@ -34,6 +36,7 @@
       transition: width 0.3s ease;
       width: 0%;
     }
+
     .step-item {
       position: relative;
       z-index: 1;
@@ -42,6 +45,7 @@
       align-items: center;
       cursor: default;
     }
+
     .step-circle {
       width: 32px;
       height: 32px;
@@ -57,24 +61,30 @@
       margin-bottom: 8px;
       transition: all 0.3s;
     }
+
     .step-item.active .step-circle {
       border-color: #17B978;
       background-color: #17B978;
       color: #fff;
     }
+
     .step-item.completed .step-circle {
       border-color: #17B978;
       background-color: #17B978;
       color: #fff;
     }
+
     .step-label {
       font-size: 12px;
       font-weight: 500;
       color: #9CA3AF;
     }
-    .step-item.active .step-label, .step-item.completed .step-label {
+
+    .step-item.active .step-label,
+    .step-item.completed .step-label {
       color: #111827;
     }
+
     .upload-box {
       border: 2px dashed #E5E7EB;
       border-radius: 12px;
@@ -83,44 +93,55 @@
       cursor: pointer;
       transition: border-color 0.2s;
     }
+
     .upload-box:hover {
       border-color: #17B978;
     }
-    .form-control.is-invalid ~ .upload-box {
+
+    .form-control.is-invalid~.upload-box {
       border-color: #ef4444 !important;
     }
   </style>
 </head>
 
 <body class="bg-white">
-  <main class="container-custom py-5 min-vh-100 d-flex align-items-center">
-    <div class="row w-100 g-5 align-items-stretch">
-      
+  <main class="container-custom d-flex align-items-center py-5" style="min-height: 100vh;">
+    <div class="row w-100 g-5 align-items-center">
+
       <!-- Left Column: Image Panel -->
       <div class="col-lg-5 d-none d-lg-block">
-        <div class="rounded-4 overflow-hidden position-relative" style="position: sticky; top: 3rem; height: calc(100vh - 6rem);">
+        <div class="rounded-4 overflow-hidden position-relative"
+          style="position: sticky; top: 3rem; height: calc(100vh - 6rem);">
           <div id="organizerCarousel" class="carousel slide h-100" data-bs-ride="carousel">
             <div class="carousel-indicators mb-4">
-              <button type="button" data-bs-target="#organizerCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#organizerCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#organizerCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#organizerCarousel" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#organizerCarousel" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#organizerCarousel" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner h-100">
               <div class="carousel-item active h-100">
-                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Organizer Visual 1">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover"
+                  alt="Organizer Visual 1">
               </div>
               <div class="carousel-item h-100">
-                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Organizer Visual 2">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover"
+                  alt="Organizer Visual 2">
               </div>
               <div class="carousel-item h-100">
-                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Organizer Visual 3">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover"
+                  alt="Organizer Visual 3">
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#organizerCarousel" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#organizerCarousel"
+              data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#organizerCarousel" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#organizerCarousel"
+              data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
@@ -131,7 +152,7 @@
       <!-- Right Column: Form Panel -->
       <div class="col-lg-7 d-flex flex-column justify-content-center">
         <div class="w-100 mx-auto" style="max-width: 600px;">
-          
+
           <!-- Brand Top Right -->
           <div class="d-flex justify-content-end mb-4">
             <a href="../index.html" class="d-flex align-items-center gap-2 text-decoration-none">
@@ -141,7 +162,9 @@
 
           <!-- Success State (Hidden by default) -->
           <div id="successState" class="d-none text-center py-5">
-            <div class="d-inline-flex align-items-center justify-content-center bg-success-subtle text-success rounded-circle mb-4" style="width: 80px; height: 80px;">
+            <div
+              class="d-inline-flex align-items-center justify-content-center bg-success-subtle text-success rounded-circle mb-4"
+              style="width: 80px; height: 80px;">
               <i data-lucide="check" width="40" height="40"></i>
             </div>
             <h2 class="fw-bold text-neutral-900 mb-3">Application Submitted</h2>
@@ -156,13 +179,14 @@
             <!-- Heading -->
             <div class="mb-4">
               <h1 class="h2 fw-bold text-neutral-900 mb-2">Become an Organizer</h1>
-              <p class="text-neutral-400 mb-0" id="stepSubtext">Apply to host and manage events on SyncEvent. Our team will review your application.</p>
+              <p class="text-neutral-400 mb-0" id="stepSubtext">Apply to host and manage events on SyncEvent. Our team
+                will review your application.</p>
             </div>
 
             <!-- Progress Indicator -->
             <div class="stepper">
               <div class="stepper-progress" id="stepperProgress"></div>
-              
+
               <div class="step-item active" id="stepIndicator1">
                 <div class="step-circle">1</div>
                 <span class="step-label">Account</span>
@@ -197,7 +221,8 @@
                   </div>
                   <div class="col-md-6">
                     <label class="form-label fw-medium text-neutral-900">Work Email</label>
-                    <input type="email" class="form-control" placeholder="john@acme.com" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+                    <input type="email" class="form-control" placeholder="john@acme.com" required
+                      pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
                   </div>
                 </div>
                 <div class="row g-3 mb-3">
@@ -205,7 +230,8 @@
                     <label class="form-label fw-medium text-neutral-900">Password</label>
                     <div class="input-group has-validation">
                       <input type="password" class="form-control" placeholder="••••••••" required minlength="6">
-                      <span class="input-group-text bg-white border-start-0 text-neutral-400 toggle-password" style="cursor: pointer">
+                      <span class="input-group-text bg-white border-start-0 text-neutral-400 toggle-password"
+                        style="cursor: pointer">
                         <i data-lucide="eye-off"></i>
                       </span>
                     </div>
@@ -214,7 +240,8 @@
                     <label class="form-label fw-medium text-neutral-900">Confirm Password</label>
                     <div class="input-group has-validation">
                       <input type="password" class="form-control" placeholder="••••••••" required minlength="6">
-                      <span class="input-group-text bg-white border-start-0 text-neutral-400 toggle-password" style="cursor: pointer">
+                      <span class="input-group-text bg-white border-start-0 text-neutral-400 toggle-password"
+                        style="cursor: pointer">
                         <i data-lucide="eye-off"></i>
                       </span>
                     </div>
@@ -224,7 +251,8 @@
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="termsOrg" required>
                     <label class="form-check-label text-neutral-900" for="termsOrg">
-                      I agree to all the <a href="#" class="text-danger text-decoration-none fw-medium">Terms</a> and <a href="#" class="text-danger text-decoration-none fw-medium">Privacy Policies</a>
+                      I agree to all the <a href="#" class="text-danger text-decoration-none fw-medium">Terms</a> and <a
+                        href="#" class="text-danger text-decoration-none fw-medium">Privacy Policies</a>
                     </label>
                   </div>
                 </div>
@@ -233,7 +261,8 @@
                   <i data-lucide="arrow-right" width="20" height="20" class="ms-1"></i>
                 </button>
                 <div class="text-center mb-4">
-                  <span class="text-neutral-400">Already have an account? <a href="login.html" class="text-primary text-decoration-none fw-medium">Login</a></span>
+                  <span class="text-neutral-400">Already have an account? <a href="login.html"
+                      class="text-primary text-decoration-none fw-medium">Login</a></span>
                 </div>
               </div>
 
@@ -285,11 +314,15 @@
                 </div>
                 <div class="mb-4">
                   <label class="form-label fw-medium text-neutral-900 small">Organization Description</label>
-                  <textarea class="form-control bg-neutral-50" rows="3" placeholder="Tell us about your organization..." required></textarea>
+                  <textarea class="form-control bg-neutral-50" rows="3" placeholder="Tell us about your organization..."
+                    required></textarea>
                 </div>
                 <div class="d-flex gap-3">
-                  <button type="button" class="btn btn-outline-light border-neutral-100 text-neutral-900 rounded-pill px-4" id="orgBtnBack1">Back</button>
-                  <button type="button" class="btn btn-primary flex-grow-1 rounded-pill py-2 fw-medium" id="orgBtnNext2">Next: Verification</button>
+                  <button type="button"
+                    class="btn btn-outline-light border-neutral-100 text-neutral-900 rounded-pill px-4"
+                    id="orgBtnBack1">Back</button>
+                  <button type="button" class="btn btn-primary flex-grow-1 rounded-pill py-2 fw-medium"
+                    id="orgBtnNext2">Next: Verification</button>
                 </div>
               </div>
 
@@ -303,7 +336,8 @@
                   <div class="mb-3">
                     <label class="form-label fw-medium text-neutral-900 small">Business Registration Document</label>
                     <div class="position-relative">
-                      <input type="file" class="form-control position-absolute top-0 start-0 w-100 h-100 opacity-0 z-2" style="cursor: pointer;" required>
+                      <input type="file" class="form-control position-absolute top-0 start-0 w-100 h-100 opacity-0 z-2"
+                        style="cursor: pointer;" required>
                       <div class="upload-box">
                         <i data-lucide="upload-cloud" class="text-primary mb-2" width="24" height="24"></i>
                         <p class="small text-neutral-400 mb-0">Click or drag to upload</p>
@@ -313,7 +347,8 @@
                   <div class="mb-3">
                     <label class="form-label fw-medium text-neutral-900 small">Tax ID Document</label>
                     <div class="position-relative">
-                      <input type="file" class="form-control position-absolute top-0 start-0 w-100 h-100 opacity-0 z-2" style="cursor: pointer;" required>
+                      <input type="file" class="form-control position-absolute top-0 start-0 w-100 h-100 opacity-0 z-2"
+                        style="cursor: pointer;" required>
                       <div class="upload-box">
                         <i data-lucide="file-text" class="text-primary mb-2" width="24" height="24"></i>
                         <p class="small text-neutral-400 mb-0">Click or drag to upload</p>
@@ -326,7 +361,8 @@
                   <div class="mb-3">
                     <label class="form-label fw-medium text-neutral-900 small">Government ID Upload</label>
                     <div class="position-relative">
-                      <input type="file" class="form-control position-absolute top-0 start-0 w-100 h-100 opacity-0 z-2" style="cursor: pointer;" required>
+                      <input type="file" class="form-control position-absolute top-0 start-0 w-100 h-100 opacity-0 z-2"
+                        style="cursor: pointer;" required>
                       <div class="upload-box">
                         <i data-lucide="user-check" class="text-primary mb-2" width="24" height="24"></i>
                         <p class="small text-neutral-400 mb-0">Click or drag to upload</p>
@@ -335,7 +371,8 @@
                   </div>
                   <div class="mb-3">
                     <label class="form-label fw-medium text-neutral-900 small">LinkedIn Profile URL</label>
-                    <input type="url" class="form-control bg-neutral-50" placeholder="https://linkedin.com/in/..." required>
+                    <input type="url" class="form-control bg-neutral-50" placeholder="https://linkedin.com/in/..."
+                      required>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="confirmDetails" required>
@@ -345,15 +382,18 @@
                   </div>
                 </div>
                 <div class="d-flex gap-3">
-                  <button type="button" class="btn btn-outline-light border-neutral-100 text-neutral-900 rounded-pill px-4" id="orgBtnBack2">Back</button>
-                  <button type="submit" class="btn btn-primary flex-grow-1 rounded-pill py-2 fw-medium" id="orgBtnSubmit">Submit Application</button>
+                  <button type="button"
+                    class="btn btn-outline-light border-neutral-100 text-neutral-900 rounded-pill px-4"
+                    id="orgBtnBack2">Back</button>
+                  <button type="submit" class="btn btn-primary flex-grow-1 rounded-pill py-2 fw-medium"
+                    id="orgBtnSubmit">Submit Application</button>
                 </div>
               </div>
             </form>
           </div>
         </div>
       </div>
-    </section>
+      </section>
   </main>
 
   <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

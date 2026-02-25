@@ -40,7 +40,11 @@
           "sms": false,
           "push": true
         },
-        "interestedCategories": ["Technology", "Music", "Business"]
+        "interestedCategories": [
+          "Technology",
+          "Music",
+          "Business"
+        ]
       },
       "statistics": {
         "eventsCreated": 12,
@@ -87,7 +91,11 @@
           "sms": true,
           "push": true
         },
-        "interestedCategories": ["Technology", "Design", "Marketing"]
+        "interestedCategories": [
+          "Technology",
+          "Design",
+          "Marketing"
+        ]
       },
       "statistics": {
         "eventsCreated": 0,
@@ -137,7 +145,9 @@
           "sms": false,
           "push": true
         },
-        "interestedCategories": ["All"]
+        "interestedCategories": [
+          "All"
+        ]
       },
       "statistics": {
         "eventsCreated": 2,
@@ -182,7 +192,13 @@
           "lng": 80.1847
         },
         "capacity": 2000,
-        "amenities": ["Parking", "WiFi", "AC", "Wheelchair Access", "Food Court"]
+        "amenities": [
+          "Parking",
+          "WiFi",
+          "AC",
+          "Wheelchair Access",
+          "Food Court"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-04-15T09:00:00",
@@ -206,7 +222,11 @@
           "currency": "INR",
           "totalQuantity": 200,
           "availableQuantity": 45,
-          "benefits": ["Priority seating", "Free workshop access", "Networking lunch"],
+          "benefits": [
+            "Priority seating",
+            "Free workshop access",
+            "Networking lunch"
+          ],
           "saleStart": "2026-01-01T00:00:00",
           "saleEnd": "2026-03-01T23:59:59"
         },
@@ -217,7 +237,10 @@
           "currency": "INR",
           "totalQuantity": 1000,
           "availableQuantity": 750,
-          "benefits": ["Conference access", "Workshop access"],
+          "benefits": [
+            "Conference access",
+            "Workshop access"
+          ],
           "saleStart": "2026-03-02T00:00:00",
           "saleEnd": "2026-04-14T23:59:59"
         },
@@ -228,7 +251,12 @@
           "currency": "INR",
           "totalQuantity": 50,
           "availableQuantity": 12,
-          "benefits": ["VIP lounge", "Meet speakers", "Premium swag kit", "Dinner with speakers"],
+          "benefits": [
+            "VIP lounge",
+            "Meet speakers",
+            "Premium swag kit",
+            "Dinner with speakers"
+          ],
           "saleStart": "2026-01-01T00:00:00",
           "saleEnd": "2026-04-14T23:59:59"
         }
@@ -315,7 +343,12 @@
           "lng": 77.2342
         },
         "capacity": 15000,
-        "amenities": ["Parking", "Food Court", "Medical Room", "VIP Lounge"]
+        "amenities": [
+          "Parking",
+          "Food Court",
+          "Medical Room",
+          "VIP Lounge"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-05-20T16:00:00",
@@ -338,7 +371,10 @@
           "currency": "INR",
           "totalQuantity": 1000,
           "availableQuantity": 234,
-          "benefits": ["3-day pass", "Early entry"],
+          "benefits": [
+            "3-day pass",
+            "Early entry"
+          ],
           "saleStart": "2026-02-01T00:00:00",
           "saleEnd": "2026-04-01T23:59:59"
         },
@@ -349,7 +385,9 @@
           "currency": "INR",
           "totalQuantity": 5000,
           "availableQuantity": 3456,
-          "benefits": ["3-day pass"],
+          "benefits": [
+            "3-day pass"
+          ],
           "saleStart": "2026-04-02T00:00:00",
           "saleEnd": "2026-05-19T23:59:59"
         }
@@ -419,7 +457,12 @@
           "lng": 77.7499
         },
         "capacity": 500,
-        "amenities": ["WiFi", "Projector", "Catering", "Parking"]
+        "amenities": [
+          "WiFi",
+          "Projector",
+          "Catering",
+          "Parking"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-03-25T18:00:00",
@@ -441,7 +484,10 @@
           "currency": "INR",
           "totalQuantity": 300,
           "availableQuantity": 156,
-          "benefits": ["Event access", "Networking dinner"],
+          "benefits": [
+            "Event access",
+            "Networking dinner"
+          ],
           "saleStart": "2026-02-01T00:00:00",
           "saleEnd": "2026-03-24T23:59:59"
         },
@@ -452,7 +498,11 @@
           "currency": "INR",
           "totalQuantity": 50,
           "availableQuantity": 23,
-          "benefits": ["VIP seating", "Meet investors", "Dinner with speakers"],
+          "benefits": [
+            "VIP seating",
+            "Meet investors",
+            "Dinner with speakers"
+          ],
           "saleStart": "2026-02-01T00:00:00",
           "saleEnd": "2026-03-24T23:59:59"
         }
@@ -531,7 +581,12 @@
           "lng": 73.7552
         },
         "capacity": 100,
-        "amenities": ["Beach Access", "Yoga Studio", "Organic Restaurant", "Pool"]
+        "amenities": [
+          "Beach Access",
+          "Yoga Studio",
+          "Organic Restaurant",
+          "Pool"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-04-10T07:00:00",
@@ -555,7 +610,11 @@
           "currency": "INR",
           "totalQuantity": 80,
           "availableQuantity": 32,
-          "benefits": ["All sessions", "Vegetarian meals", "Accommodation (shared)"],
+          "benefits": [
+            "All sessions",
+            "Vegetarian meals",
+            "Accommodation (shared)"
+          ],
           "saleStart": "2026-02-01T00:00:00",
           "saleEnd": "2026-04-05T23:59:59"
         },
@@ -566,7 +625,11 @@
           "currency": "INR",
           "totalQuantity": 20,
           "availableQuantity": 8,
-          "benefits": ["Private room", "Personal yoga session", "Spa treatment"],
+          "benefits": [
+            "Private room",
+            "Personal yoga session",
+            "Spa treatment"
+          ],
           "saleStart": "2026-02-01T00:00:00",
           "saleEnd": "2026-04-05T23:59:59"
         }
@@ -645,7 +708,12 @@
           "lng": 78.3822
         },
         "capacity": 5000,
-        "amenities": ["Parking", "Food Stalls", "Seating Area", "First Aid"]
+        "amenities": [
+          "Parking",
+          "Food Stalls",
+          "Seating Area",
+          "First Aid"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-05-01T11:00:00",
@@ -668,7 +736,10 @@
           "currency": "INR",
           "totalQuantity": 5000,
           "availableQuantity": 3450,
-          "benefits": ["One day entry", "Food voucher worth ₹100"],
+          "benefits": [
+            "One day entry",
+            "Food voucher worth ₹100"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-04-30T23:59:59"
         },
@@ -679,7 +750,11 @@
           "currency": "INR",
           "totalQuantity": 1000,
           "availableQuantity": 567,
-          "benefits": ["All 5 days entry", "Food voucher worth ₹500", "VIP queue access"],
+          "benefits": [
+            "All 5 days entry",
+            "Food voucher worth ₹500",
+            "VIP queue access"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-04-30T23:59:59"
         }
@@ -758,7 +833,12 @@
           "lng": 78.3825
         },
         "capacity": 50,
-        "amenities": ["WiFi", "Projector", "Whiteboard", "Coffee"]
+        "amenities": [
+          "WiFi",
+          "Projector",
+          "Whiteboard",
+          "Coffee"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-04-04T10:00:00",
@@ -780,7 +860,12 @@
           "currency": "INR",
           "totalQuantity": 40,
           "availableQuantity": 15,
-          "benefits": ["2-day workshop", "Course materials", "Certificate", "Lunch included"],
+          "benefits": [
+            "2-day workshop",
+            "Course materials",
+            "Certificate",
+            "Lunch included"
+          ],
           "saleStart": "2026-02-15T00:00:00",
           "saleEnd": "2026-04-03T23:59:59"
         }
@@ -850,7 +935,11 @@
           "lng": 72.8306
         },
         "capacity": 200,
-        "amenities": ["Bar", "AC", "Food Available"]
+        "amenities": [
+          "Bar",
+          "AC",
+          "Food Available"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-03-28T20:00:00",
@@ -872,7 +961,9 @@
           "currency": "INR",
           "totalQuantity": 150,
           "availableQuantity": 45,
-          "benefits": ["General admission"],
+          "benefits": [
+            "General admission"
+          ],
           "saleStart": "2026-02-01T00:00:00",
           "saleEnd": "2026-03-27T23:59:59"
         },
@@ -883,7 +974,11 @@
           "currency": "INR",
           "totalQuantity": 30,
           "availableQuantity": 12,
-          "benefits": ["Front row", "Meet & greet", "1 complimentary drink"],
+          "benefits": [
+            "Front row",
+            "Meet & greet",
+            "1 complimentary drink"
+          ],
           "saleStart": "2026-02-01T00:00:00",
           "saleEnd": "2026-03-27T23:59:59"
         }
@@ -953,7 +1048,11 @@
           "lng": 80.2824
         },
         "capacity": 10000,
-        "amenities": ["Water Stations", "Medical Aid", "Baggage Counter"]
+        "amenities": [
+          "Water Stations",
+          "Medical Aid",
+          "Baggage Counter"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-06-07T05:30:00",
@@ -976,7 +1075,12 @@
           "currency": "INR",
           "totalQuantity": 1000,
           "availableQuantity": 567,
-          "benefits": ["Bib", "T-shirt", "Finisher medal", "Breakfast"],
+          "benefits": [
+            "Bib",
+            "T-shirt",
+            "Finisher medal",
+            "Breakfast"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-05-31T23:59:59"
         },
@@ -987,7 +1091,12 @@
           "currency": "INR",
           "totalQuantity": 2000,
           "availableQuantity": 1234,
-          "benefits": ["Bib", "T-shirt", "Finisher medal", "Breakfast"],
+          "benefits": [
+            "Bib",
+            "T-shirt",
+            "Finisher medal",
+            "Breakfast"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-05-31T23:59:59"
         },
@@ -998,7 +1107,11 @@
           "currency": "INR",
           "totalQuantity": 3000,
           "availableQuantity": 1876,
-          "benefits": ["Bib", "T-shirt", "Participation certificate"],
+          "benefits": [
+            "Bib",
+            "T-shirt",
+            "Participation certificate"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-05-31T23:59:59"
         }
@@ -1077,7 +1190,11 @@
           "lng": 75.8211
         },
         "capacity": 800,
-        "amenities": ["AC", "Wheelchair Access", "Cafe"]
+        "amenities": [
+          "AC",
+          "Wheelchair Access",
+          "Cafe"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-04-17T11:00:00",
@@ -1101,7 +1218,9 @@
           "currency": "INR",
           "totalQuantity": 500,
           "availableQuantity": 378,
-          "benefits": ["Single day entry"],
+          "benefits": [
+            "Single day entry"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-04-16T23:59:59"
         },
@@ -1112,7 +1231,10 @@
           "currency": "INR",
           "totalQuantity": 200,
           "availableQuantity": 145,
-          "benefits": ["All 3 days entry", "Exhibition catalog"],
+          "benefits": [
+            "All 3 days entry",
+            "Exhibition catalog"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-04-16T23:59:59"
         }
@@ -1182,7 +1304,12 @@
           "lng": 77.7499
         },
         "capacity": 500,
-        "amenities": ["WiFi", "Projector", "Catering", "Parking"]
+        "amenities": [
+          "WiFi",
+          "Projector",
+          "Catering",
+          "Parking"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-05-22T09:00:00",
@@ -1204,7 +1331,11 @@
           "currency": "INR",
           "totalQuantity": 100,
           "availableQuantity": 23,
-          "benefits": ["2-day conference", "Workshop access", "Lunch included"],
+          "benefits": [
+            "2-day conference",
+            "Workshop access",
+            "Lunch included"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-04-15T23:59:59"
         },
@@ -1215,7 +1346,11 @@
           "currency": "INR",
           "totalQuantity": 300,
           "availableQuantity": 267,
-          "benefits": ["2-day conference", "Workshop access", "Lunch included"],
+          "benefits": [
+            "2-day conference",
+            "Workshop access",
+            "Lunch included"
+          ],
           "saleStart": "2026-04-16T00:00:00",
           "saleEnd": "2026-05-21T23:59:59"
         }
@@ -1294,7 +1429,11 @@
           "lng": 73.7612
         },
         "capacity": 150,
-        "amenities": ["Restaurant", "Parking", "Scenic Views"]
+        "amenities": [
+          "Restaurant",
+          "Parking",
+          "Scenic Views"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-05-09T11:00:00",
@@ -1316,7 +1455,11 @@
           "currency": "INR",
           "totalQuantity": 100,
           "availableQuantity": 56,
-          "benefits": ["Wine tasting (6 wines)", "Vineyard tour", "Gourmet lunch"],
+          "benefits": [
+            "Wine tasting (6 wines)",
+            "Vineyard tour",
+            "Gourmet lunch"
+          ],
           "saleStart": "2026-03-15T00:00:00",
           "saleEnd": "2026-05-08T23:59:59"
         }
@@ -1386,7 +1529,12 @@
           "lng": 76.4288
         },
         "capacity": 25,
-        "amenities": ["Houseboat", "WiFi", "Restaurant", "Boat Tours"]
+        "amenities": [
+          "Houseboat",
+          "WiFi",
+          "Restaurant",
+          "Boat Tours"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-06-12T09:00:00",
@@ -1408,7 +1556,12 @@
           "currency": "INR",
           "totalQuantity": 20,
           "availableQuantity": 12,
-          "benefits": ["3-day workshop", "Houseboat stay (shared)", "All meals", "Equipment rental"],
+          "benefits": [
+            "3-day workshop",
+            "Houseboat stay (shared)",
+            "All meals",
+            "Equipment rental"
+          ],
           "saleStart": "2026-04-01T00:00:00",
           "saleEnd": "2026-06-10T23:59:59"
         },
@@ -1419,7 +1572,12 @@
           "currency": "INR",
           "totalQuantity": 5,
           "availableQuantity": 3,
-          "benefits": ["Private room", "Personal instructor", "All meals", "Equipment rental"],
+          "benefits": [
+            "Private room",
+            "Personal instructor",
+            "All meals",
+            "Equipment rental"
+          ],
           "saleStart": "2026-04-01T00:00:00",
           "saleEnd": "2026-06-10T23:59:59"
         }
@@ -1489,7 +1647,12 @@
           "lng": 77.2342
         },
         "capacity": 15000,
-        "amenities": ["Parking", "Food Court", "Restrooms", "First Aid"]
+        "amenities": [
+          "Parking",
+          "Food Court",
+          "Restrooms",
+          "First Aid"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-11-07T16:00:00",
@@ -1511,7 +1674,9 @@
           "currency": "INR",
           "totalQuantity": 10000,
           "availableQuantity": 8765,
-          "benefits": ["Single day entry"],
+          "benefits": [
+            "Single day entry"
+          ],
           "saleStart": "2026-08-01T00:00:00",
           "saleEnd": "2026-11-06T23:59:59"
         },
@@ -1522,7 +1687,11 @@
           "currency": "INR",
           "totalQuantity": 2000,
           "availableQuantity": 1456,
-          "benefits": ["All days entry", "₹200 food voucher", "Priority entry"],
+          "benefits": [
+            "All days entry",
+            "₹200 food voucher",
+            "Priority entry"
+          ],
           "saleStart": "2026-08-01T00:00:00",
           "saleEnd": "2026-11-06T23:59:59"
         }
@@ -1601,7 +1770,12 @@
           "lng": 72.8269
         },
         "capacity": 400,
-        "amenities": ["Luxury Hotel", "WiFi", "Catering", "Valet Parking"]
+        "amenities": [
+          "Luxury Hotel",
+          "WiFi",
+          "Catering",
+          "Valet Parking"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-07-18T09:00:00",
@@ -1623,7 +1797,11 @@
           "currency": "INR",
           "totalQuantity": 300,
           "availableQuantity": 234,
-          "benefits": ["2-day access", "Lunch included", "Networking reception"],
+          "benefits": [
+            "2-day access",
+            "Lunch included",
+            "Networking reception"
+          ],
           "saleStart": "2026-04-01T00:00:00",
           "saleEnd": "2026-07-17T23:59:59"
         },
@@ -1634,7 +1812,11 @@
           "currency": "INR",
           "totalQuantity": 50,
           "availableQuantity": 23,
-          "benefits": ["Front row seating", "Private dinner with speakers", "1-on-1 mentoring"],
+          "benefits": [
+            "Front row seating",
+            "Private dinner with speakers",
+            "1-on-1 mentoring"
+          ],
           "saleStart": "2026-04-01T00:00:00",
           "saleEnd": "2026-07-17T23:59:59"
         }
@@ -1713,7 +1895,12 @@
           "lng": 73.8488
         },
         "capacity": 2000,
-        "amenities": ["Parking", "Food Court", "Restrooms", "Baby Changing"]
+        "amenities": [
+          "Parking",
+          "Food Court",
+          "Restrooms",
+          "Baby Changing"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-05-16T10:00:00",
@@ -1735,7 +1922,10 @@
           "currency": "INR",
           "totalQuantity": 1000,
           "availableQuantity": 678,
-          "benefits": ["Child entry (6-14 years)", "Activity kit"],
+          "benefits": [
+            "Child entry (6-14 years)",
+            "Activity kit"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-05-15T23:59:59"
         },
@@ -1746,7 +1936,9 @@
           "currency": "INR",
           "totalQuantity": 1000,
           "availableQuantity": 745,
-          "benefits": ["Adult entry"],
+          "benefits": [
+            "Adult entry"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-05-15T23:59:59"
         },
@@ -1757,7 +1949,10 @@
           "currency": "INR",
           "totalQuantity": 200,
           "availableQuantity": 112,
-          "benefits": ["2 adults + 2 children", "Activity kits for kids"],
+          "benefits": [
+            "2 adults + 2 children",
+            "Activity kits for kids"
+          ],
           "saleStart": "2026-03-01T00:00:00",
           "saleEnd": "2026-05-15T23:59:59"
         }
@@ -1827,7 +2022,12 @@
           "lng": 88.4488
         },
         "capacity": 2000,
-        "amenities": ["AC", "Parking", "WiFi", "Backstage"]
+        "amenities": [
+          "AC",
+          "Parking",
+          "WiFi",
+          "Backstage"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-08-14T12:00:00",
@@ -1849,7 +2049,9 @@
           "currency": "INR",
           "totalQuantity": 1000,
           "availableQuantity": 876,
-          "benefits": ["Single day access to runway shows"],
+          "benefits": [
+            "Single day access to runway shows"
+          ],
           "saleStart": "2026-05-01T00:00:00",
           "saleEnd": "2026-08-13T23:59:59"
         },
@@ -1860,7 +2062,12 @@
           "currency": "INR",
           "totalQuantity": 200,
           "availableQuantity": 134,
-          "benefits": ["All 3 days", "Front row seating", "Backstage pass", "Designer meet & greet"],
+          "benefits": [
+            "All 3 days",
+            "Front row seating",
+            "Backstage pass",
+            "Designer meet & greet"
+          ],
           "saleStart": "2026-05-01T00:00:00",
           "saleEnd": "2026-08-13T23:59:59"
         }
@@ -1939,7 +2146,11 @@
           "lng": 72.6841
         },
         "capacity": 60,
-        "amenities": ["Lab Equipment", "WiFi", "Cafeteria"]
+        "amenities": [
+          "Lab Equipment",
+          "WiFi",
+          "Cafeteria"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-07-04T09:00:00",
@@ -1961,7 +2172,12 @@
           "currency": "INR",
           "totalQuantity": 40,
           "availableQuantity": 15,
-          "benefits": ["2-day workshop", "Robot kit included", "Certificate", "Lunch"],
+          "benefits": [
+            "2-day workshop",
+            "Robot kit included",
+            "Certificate",
+            "Lunch"
+          ],
           "saleStart": "2026-04-01T00:00:00",
           "saleEnd": "2026-07-03T23:59:59"
         }
@@ -2040,7 +2256,12 @@
           "lng": 80.2481
         },
         "capacity": 1200,
-        "amenities": ["AC", "Parking", "Cafe", "Bookstore"]
+        "amenities": [
+          "AC",
+          "Parking",
+          "Cafe",
+          "Bookstore"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-12-15T16:00:00",
@@ -2062,7 +2283,9 @@
           "currency": "INR",
           "totalQuantity": 500,
           "availableQuantity": 389,
-          "benefits": ["One evening concert"],
+          "benefits": [
+            "One evening concert"
+          ],
           "saleStart": "2026-09-01T00:00:00",
           "saleEnd": "2026-12-14T23:59:59"
         },
@@ -2073,7 +2296,10 @@
           "currency": "INR",
           "totalQuantity": 200,
           "availableQuantity": 145,
-          "benefits": ["All concerts", "Priority seating"],
+          "benefits": [
+            "All concerts",
+            "Priority seating"
+          ],
           "saleStart": "2026-09-01T00:00:00",
           "saleEnd": "2026-12-14T23:59:59"
         }
@@ -2143,7 +2369,12 @@
           "lng": 77.5030
         },
         "capacity": 5000,
-        "amenities": ["Parking", "WiFi", "Food Court", "Seminar Halls"]
+        "amenities": [
+          "Parking",
+          "WiFi",
+          "Food Court",
+          "Seminar Halls"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-09-25T10:00:00",
@@ -2165,7 +2396,10 @@
           "currency": "INR",
           "totalQuantity": 3000,
           "availableQuantity": 2345,
-          "benefits": ["Expo access", "Seminar access"],
+          "benefits": [
+            "Expo access",
+            "Seminar access"
+          ],
           "saleStart": "2026-07-01T00:00:00",
           "saleEnd": "2026-09-24T23:59:59"
         },
@@ -2176,7 +2410,11 @@
           "currency": "INR",
           "totalQuantity": 500,
           "availableQuantity": 312,
-          "benefits": ["VIP lounge", "1-on-1 with developers", "Exclusive project previews"],
+          "benefits": [
+            "VIP lounge",
+            "1-on-1 with developers",
+            "Exclusive project previews"
+          ],
           "saleStart": "2026-07-01T00:00:00",
           "saleEnd": "2026-09-24T23:59:59"
         }
@@ -2255,7 +2493,12 @@
           "lng": 75.8177
         },
         "capacity": 3000,
-        "amenities": ["Multiple Venues", "Book Stalls", "Cafe", "Seating Areas"]
+        "amenities": [
+          "Multiple Venues",
+          "Book Stalls",
+          "Cafe",
+          "Seating Areas"
+        ]
       },
       "schedule": {
         "startDateTime": "2026-01-21T10:00:00",
@@ -2278,7 +2521,9 @@
           "currency": "INR",
           "totalQuantity": 10000,
           "availableQuantity": 5678,
-          "benefits": ["General admission to sessions"],
+          "benefits": [
+            "General admission to sessions"
+          ],
           "saleStart": "2025-11-01T00:00:00",
           "saleEnd": "2026-01-20T23:59:59"
         },
@@ -2289,7 +2534,12 @@
           "currency": "INR",
           "totalQuantity": 500,
           "availableQuantity": 234,
-          "benefits": ["Priority seating", "Delegate kit", "Access to exclusive sessions", "Lunch included"],
+          "benefits": [
+            "Priority seating",
+            "Delegate kit",
+            "Access to exclusive sessions",
+            "Lunch included"
+          ],
           "saleStart": "2025-11-01T00:00:00",
           "saleEnd": "2026-01-20T23:59:59"
         }
@@ -2340,7 +2590,7 @@
       "status": "CONFIRMED",
       "img": "https://dummyimage.com/600x400/4F46E5/ffffff&text=AI+Summit"
     },
-        {
+    {
       "id": "REG-5",
       "userId": "USR-2001",
       "eventId": "EVT-5001",
@@ -2392,8 +2642,35 @@
     }
   ],
   "payments": [
-    { "id": "PAY-1001", "userId": "USR-1001", "eventTitle": "AI Tech Summit 2026", "date": "2026-02-24T10:30:00", "tickets": "Standard x 1", "method": "UPI", "amount": 1499, "status": "Confirmed" },
-    { "id": "PAY-1002", "userId": "USR-1001", "eventTitle": "Delhi Music Festival 2026", "date": "2026-02-20T14:15:00", "tickets": "Early Bird x 2", "method": "Credit Card", "amount": 3998, "status": "Refunded" },
-    { "id": "PAY-1003", "userId": "USR-1001", "eventTitle": "Startup Pitch Night", "date": "2026-02-18T09:00:00", "tickets": "VIP x 1", "method": "Net Banking", "amount": 1499, "status": "Failed" }
+    {
+      "id": "PAY-1001",
+      "userId": "USR-1001",
+      "eventTitle": "AI Tech Summit 2026",
+      "date": "2026-02-24T10:30:00",
+      "tickets": "Standard x 1",
+      "method": "UPI",
+      "amount": 1499,
+      "status": "Confirmed"
+    },
+    {
+      "id": "PAY-1002",
+      "userId": "USR-1001",
+      "eventTitle": "Delhi Music Festival 2026",
+      "date": "2026-02-20T14:15:00",
+      "tickets": "Early Bird x 2",
+      "method": "Credit Card",
+      "amount": 3998,
+      "status": "Refunded"
+    },
+    {
+      "id": "PAY-1003",
+      "userId": "USR-1001",
+      "eventTitle": "Startup Pitch Night",
+      "date": "2026-02-18T09:00:00",
+      "tickets": "VIP x 1",
+      "method": "Net Banking",
+      "amount": 1499,
+      "status": "Failed"
+    }
   ]
 }

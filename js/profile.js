@@ -155,6 +155,14 @@ export function initProfilePage() {
         });
     }
 
+    const completeProfileBtn = document.getElementById('btn-complete-profile');
+    if (completeProfileBtn) {
+        completeProfileBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchSection('profile');
+        });
+    }
+
     const viewAllPaymentsBtn = document.getElementById('btn-view-all-payments');
     if (viewAllPaymentsBtn) {
         viewAllPaymentsBtn.addEventListener('click', (e) => {

@@ -10,13 +10,13 @@
 </head>
 
 <body class="bg-white">
-  <main class="container-custom py-5 min-vh-100 d-flex align-items-center">
+  <main class="container-custom py-4 py-lg-0 min-vh-100 d-flex align-items-center">
     <div class="row w-100 g-5 align-items-stretch">
-      
+
       <!-- 2. Left Column: Authentication Panel -->
       <div class="col-lg-6 d-flex flex-column justify-content-center">
         <div class="w-100 mx-auto" style="max-width: 480px;">
-          
+
           <!-- 2.1 Brand Area -->
           <div class="mb-5">
             <a href="../index.html" class="d-flex align-items-center gap-2 text-decoration-none">
@@ -35,15 +35,16 @@
             <!-- Email Field -->
             <div class="mb-3">
               <label class="form-label fw-medium text-neutral-900">Email</label>
-              <input type="email" class="form-control" placeholder="john@example.com" required>
+              <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
             </div>
 
             <!-- Password Field -->
             <div class="mb-3">
               <label class="form-label fw-medium text-neutral-900">Password</label>
               <div class="input-group has-validation">
-                <input type="password" class="form-control" placeholder="••••••••" required>
-                <span class="input-group-text bg-white border-start-0 text-neutral-400 toggle-password" style="cursor: pointer">
+                <input type="password" class="form-control" id="password" placeholder="••••••••" required>
+                <span class="input-group-text bg-white border-start-0 text-neutral-400 toggle-password"
+                  style="cursor: pointer">
                   <i data-lucide="eye-off"></i>
                 </span>
               </div>
@@ -55,7 +56,8 @@
                 <input class="form-check-input" type="checkbox" id="rememberMe">
                 <label class="form-check-label text-neutral-900" for="rememberMe">Remember me</label>
               </div>
-              <a href="#" class="text-danger text-decoration-none fw-medium" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot Password?</a>
+              <a href="#" class="text-danger text-decoration-none fw-medium" data-bs-toggle="modal"
+                data-bs-target="#forgotPasswordModal">Forgot Password?</a>
             </div>
 
             <!-- 2.5 Primary Login Button -->
@@ -63,7 +65,8 @@
 
             <!-- 2.6 Signup Redirect Text -->
             <div class="text-center mb-4">
-              <span class="text-neutral-400">Don’t have an account? <a href="signup.html" class="text-primary text-decoration-none fw-medium">Sign up</a></span>
+              <span class="text-neutral-400">Don’t have an account? <a href="signup.html"
+                  class="text-primary text-decoration-none fw-medium">Sign up</a></span>
             </div>
 
             <!-- 2.7 Divider Area -->
@@ -97,22 +100,27 @@
 
       <!-- 3. Right Column: Image Panel -->
       <div class="col-lg-6">
-        <div class="rounded-4 overflow-hidden position-relative" style="position: sticky; top: 3rem; height: calc(100vh - 6rem);">
+        <div class="rounded-4 overflow-hidden position-relative"
+          style="position: sticky; top: 3rem; height: calc(100vh - 6rem);">
           <div id="loginCarousel" class="carousel slide h-100" data-bs-ride="carousel">
             <div class="carousel-indicators mb-4">
-              <button type="button" data-bs-target="#loginCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#loginCarousel" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
               <button type="button" data-bs-target="#loginCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
               <button type="button" data-bs-target="#loginCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner h-100">
               <div class="carousel-item active h-100">
-                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Login Visual 1">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover"
+                  alt="Login Visual 1">
               </div>
               <div class="carousel-item h-100">
-                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Login Visual 2">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover"
+                  alt="Login Visual 2">
               </div>
               <div class="carousel-item h-100">
-                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Login Visual 3">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover"
+                  alt="Login Visual 3">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#loginCarousel" data-bs-slide="prev">
@@ -125,9 +133,9 @@
             </button>
           </div>
         </div>
-  </div>
-</div>
       </div>
+    </div>
+    </div>
 
     </div>
   </main>
