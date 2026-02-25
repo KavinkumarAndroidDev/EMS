@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book Tickets - SyncEvent</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="icon" href="../../assets/favicon.svg" type="image/x-icon">
+    <style>
+        .step-indicator {
+            background: #F9FAFB;
+            border-radius: 999px;
+            padding: 0.5rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: #6B7280;
+        }
+
+        .step-indicator .active {
+            background-color: #17B978;
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: 999px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #fff;
+            border: 1px solid #E5E7EB;
+            border-radius: 999px;
+            padding: 0.25rem 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: none;
+            background: #F3F4F6;
+            color: #111827;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .quantity-btn:hover {
+            background: #E5E7EB;
+        }
+
+        .sticky-summary {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #111827;
+            color: #fff;
+            padding: 1rem 0;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sticky-summary.visible {
+            transform: translateY(0);
+        }
+
+        .card-custom.selected {
+            background-color: rgba(23, 185, 120, 0.03);
+            border-color: #17B978;
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- Header -->
+    <header class="site-header search-variant sticky-top">
+        <div class="container-custom">
+            <div class="header-inner">
+                <div class="header-left">
+                    <a class="brand" href="../../index.html">
+                        <img src="../../assets/logo.SVG" alt="SyncEvent">
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-text text-neutral-900" onclick="history.back()">
+                        <i data-lucide="x" width="24" height="24"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pb-7">
+
+
+        <!-- Event Bar -->
+        <div class="border-bottom border-neutral-100 py-3 ">
+            <div class="container-custom">
+                <div class="d-flex align-items-center gap-2 text-neutral-400 small mb-1">
+                    <a href="#" class="text-decoration-none text-neutral-400" onclick="history.back()">Back</a>
+                    <span>/</span>
+                    <span class="text-neutral-900 fw-medium" id="booking-event-title">Loading Event...</span>
+                </div>
+                <div class="small text-neutral-400" id="booking-event-date">Loading Date...</div>
+            </div>
+        </div>
+
+        <!-- Step Indicator -->
+        <div class="container-custom py-4 d-flex justify-content-center mb-2">
+            <div class="step-indicator">
+                <span class="px-3 py-1 active" id="step1-indicator">Tickets</span>
+                <i data-lucide="chevron-right" width="16" height="16"></i>
+                <span class="px-3 py-1" id="step2-indicator">Review & Proceed to pay</span>
+            </div>
+        </div>
+
+
+
+        <!-- STATE 1: SELECT TICKETS -->
+        <section id="step-select-tickets" class="container-custom" style="max-width: 800px;">
+            <h3 class="text-center mb-4">Select Tickets</h3>
+            <div id="tickets-container" class="d-flex flex-column gap-3">
+                <!-- Tickets injected by JS -->
+            </div>
+        </section>
+
+        <!-- STATE 2: PAYMENT -->
+        <section id="step-payment" class="container-custom d-none">
+            <div class="row g-5">
+                <!-- Left: Payment Form -->
+                <div class="col-lg-7">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="mb-0 fw-bold">Payment</h3>
+                        <div
+                            class="d-flex align-items-center gap-2 text-success small bg-success-subtle px-3 py-1 rounded-pill">
+                            <i data-lucide="lock" width="14" height="14"></i>
+                            <span class="fw-medium">Secure Payment</span>
+                        </div>
+                    </div>
+                    <hr class="border-neutral-100 mb-4">
+
+                    <form id="payment-form">
+                        <div class="mb-4">
+                            <label class="form-label fw-medium text-neutral-900">Payment Method</label>
+                            <div class="d-flex gap-3">
+                                <div
+                                    class="form-check card-custom p-3 d-flex align-items-center justify-content-center gap-2 cursor-pointer flex-fill payment-method-card border-primary bg-primary-subtle bg-opacity-10">
+                                    <input class="form-check-input mt-0" type="radio" name="paymentMethod" id="payCard"
+                                        checked>
+                                    <label class="form-check-label d-flex align-items-center gap-2 cursor-pointer"
+                                        for="payCard">
+                                        <i data-lucide="credit-card" width="20" height="20" class="text-primary"></i>
+                                        <span class="fw-medium">Card</span>
+                                    </label>
+                                </div>
+                                <div
+                                    class="form-check card-custom p-3 d-flex align-items-center justify-content-center gap-2 cursor-pointer flex-fill payment-method-card">
+                                    <input class="form-check-input mt-0" type="radio" name="paymentMethod" id="payBank">
+                                    <label class="form-check-label d-flex align-items-center gap-2 cursor-pointer"
+                                        for="payBank">
+                                        <i data-lucide="landmark" width="20" height="20" class="text-neutral-400"></i>
+                                        <span class="fw-medium">Bank</span>
+                                    </label>
+                                </div>
+                                <div
+                                    class="form-check card-custom p-3 d-flex align-items-center justify-content-center gap-2 cursor-pointer flex-fill payment-method-card">
+                                    <input class="form-check-input mt-0" type="radio" name="paymentMethod"
+                                        id="payTransfer">
+                                    <label class="form-check-label d-flex align-items-center gap-2 cursor-pointer"
+                                        for="payTransfer">
+                                        <i data-lucide="arrow-right-left" width="20" height="20"
+                                            class="text-neutral-400"></i>
+                                        <span class="fw-medium">Transfer</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-medium text-neutral-900">Card Number</label>
+                            <div class="position-relative">
+                                <input type="text" class="form-control" placeholder="0000 0000 0000 0000" required
+                                    style="padding-right: 3rem;">
+                                <div class="position-absolute top-50 end-0 translate-middle-y pe-3 d-flex gap-1">
+                                    <div class="bg-neutral-100 rounded-1" style="width: 24px; height: 16px;"></div>
+                                    <div class="bg-neutral-100 rounded-1" style="width: 24px; height: 16px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium text-neutral-900">Expiry Date</label>
+                                <input type="text" class="form-control" placeholder="MM/YY" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-medium text-neutral-900">CVV</label>
+                                <input type="password" class="form-control" placeholder="123" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="saveCard">
+                                <label class="form-check-label text-neutral-600 small" for="saveCard">
+                                    Save this card for faster payments
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 rounded-pill py-3 mb-3" id="btn-pay-now">
+                            Pay <span id="pay-btn-amount">₹0</span>
+                        </button>
+
+                        <p class="text-center text-neutral-400 caption">
+                            By clicking "Pay", you agree to our Terms & Conditions.
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Right: Summary -->
+                <div class="col-lg-5">
+                    <!-- Event Summary Card -->
+                    <div class="card-custom mb-3">
+                        <div class="d-flex gap-3">
+                            <img src="" id="summary-event-img" class="rounded-3 object-fit-cover"
+                                style="width: 80px; height: 80px;" alt="Event">
+                            <div>
+                                <h6 class="fw-bold text-neutral-900 mb-1" id="summary-event-title">Loading...</h6>
+                                <div class="small text-neutral-400 mb-1" id="summary-event-category">Category</div>
+                                <div class="small text-neutral-400" id="summary-event-date">Date</div>
+                                <div class="small text-neutral-400" id="summary-event-location">Location</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Booking Summary Card -->
+                    <div class="card-custom mb-4">
+                        <h5 class="fw-bold mb-4">Booking Summary</h5>
+                        <div id="booking-summary-items" class="d-flex flex-column gap-2 mb-3">
+                            <!-- Items injected by JS -->
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-medium text-neutral-900">Discount Code</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="discount-code" placeholder="Discount code">
+                                <button class="btn btn-outline-primary" type="button"
+                                    id="btn-apply-discount">Apply</button>
+                            </div>
+                        </div>
+
+                        <hr class="border-neutral-100 my-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-neutral-600">Subtotal</span>
+                            <span class="fw-medium" id="summary-subtotal">₹0</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2 d-none"
+                            id="summary-discount-row">
+                            <span class="text-success">Discount</span>
+                            <span class="fw-medium text-success" id="summary-discount">-₹0</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-neutral-600">Tax (18%)</span>
+                            <span class="fw-medium" id="summary-tax">₹0</span>
+                        </div>
+                        <hr class="border-neutral-100 my-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fw-bold text-neutral-900 fs-5">Total</span>
+                            <span class="fw-bold text-primary fs-4" id="summary-total">₹0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Sticky Bottom Summary Bar -->
+    <div id="sticky-summary" class="sticky-summary">
+        <div class="container-custom d-flex justify-content-between align-items-center">
+            <div>
+                <div class="fs-5 fw-bold" id="sticky-total">₹0</div>
+                <div class="small text-white-50" id="sticky-count">0 Tickets</div>
+            </div>
+            <button class="btn btn-primary rounded-pill px-4" id="btn-proceed">
+                Review and pay <i data-lucide="arrow-right" width="18" height="18" class="ms-2"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 p-4 text-center">
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="bg-success-subtle text-success rounded-circle p-3 d-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px;">
+                        <i data-lucide="check" width="40" height="40"></i>
+                    </div>
+                </div>
+                <h4 class="fw-bold text-neutral-900 mb-2">Booking Confirmed!</h4>
+                <p class="text-neutral-400 mb-4">Your tickets have been sent to your email.</p>
+                <div class="d-flex flex-column gap-2">
+                    <a href="../../index.html" class="btn btn-primary rounded-pill w-100">Go to Home</a>
+                    <button class="btn btn-text text-neutral-600 w-100">View Ticket</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Failure Modal -->
+    <div class="modal fade" id="failureModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4 p-4 text-center">
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="bg-danger-subtle text-danger rounded-circle p-3 d-flex align-items-center justify-content-center"
+                        style="width: 80px; height: 80px;">
+                        <i data-lucide="x" width="40" height="40"></i>
+                    </div>
+                </div>
+                <h4 class="fw-bold text-neutral-900 mb-2">Payment Failed</h4>
+                <p class="text-neutral-400 mb-4">Your payment has failed. Please try again.</p>
+                <div class="d-flex flex-column gap-2">
+                    <button class="btn btn-danger rounded-pill w-100" data-bs-dismiss="modal">Try Again</button>
+                    <button class="btn btn-text text-neutral-600 w-100" onclick="history.back()">Cancel Booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="../../js/main.js"></script>
+</body>
+
+</html>

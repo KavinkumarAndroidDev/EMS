@@ -1,0 +1,127 @@
+.btn {
+  --ems-btn-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: var(--ems-btn-height);
+  padding-inline: 1.5rem;
+  border-radius: $border-radius-pill;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.btn-primary {
+  background-color: $primary;
+  border: 0;
+  color: $white;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $primary-hover;
+    color: $white;
+  }
+
+  &:active,
+  &.active {
+    background-color: $primary-active;
+    color: $white;
+  }
+}
+
+.btn-secondary {
+  background-color: $secondary;
+  border: 0;
+  color: $white;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $secondary-hover;
+    color: $white;
+  }
+
+  &:active,
+  &.active {
+    background-color: $secondary-active;
+    color: $white;
+  }
+}
+
+.btn-danger {
+  background-color: $danger;
+  border: 0;
+  color: $white;
+
+  &:hover,
+  &:focus-visible {
+    background-color: $danger-hover;
+    color: $white;
+  }
+
+  &:active,
+  &.active {
+    background-color: $danger-active;
+    color: $white;
+  }
+}
+
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-text {
+  background-color: transparent;
+  border-width: 1px;
+  min-height: var(--ems-btn-height);
+  padding-inline: 1.5rem;
+
+  &:hover,
+  &:focus-visible {
+    background-color: color-mix(in srgb, currentColor 8%, transparent);
+  }
+
+  &:active,
+  &.active {
+    background-color: color-mix(in srgb, currentColor 14%, transparent);
+  }
+}
+
+.btn-outline-text {
+  min-width: 180px;
+  text-align: center;
+}
+
+.btn-text {
+  min-height: auto;
+  height: auto;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: $primary;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+
+  &:hover,
+  &:focus-visible {
+    color: $primary-hover;
+    text-decoration: underline;
+    text-underline-offset: 0.18rem;
+  }
+
+  &:active,
+  &.active {
+    color: $primary-active;
+  }
+}
+
+.btn:disabled,
+.btn.disabled {
+  opacity: $btn-disabled-opacity;
+  pointer-events: none;
+}
+
+.btn-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex: 0 0 auto;
+}

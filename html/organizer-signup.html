@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organizer Sign Up - SyncEvent</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="icon" href="../assets/favicon.svg" type="image/x-icon">
+  <style>
+    .stepper {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+    .stepper::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #E5E7EB;
+      z-index: 0;
+    }
+    .stepper-progress {
+      position: absolute;
+      top: 15px;
+      left: 0;
+      height: 2px;
+      background-color: #17B978;
+      z-index: 0;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+    .step-item {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: default;
+    }
+    .step-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 2px solid #E5E7EB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      color: #9CA3AF;
+      margin-bottom: 8px;
+      transition: all 0.3s;
+    }
+    .step-item.active .step-circle {
+      border-color: #17B978;
+      background-color: #17B978;
+      color: #fff;
+    }
+    .step-item.completed .step-circle {
+      border-color: #17B978;
+      background-color: #17B978;
+      color: #fff;
+    }
+    .step-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #9CA3AF;
+    }
+    .step-item.active .step-label, .step-item.completed .step-label {
+      color: #111827;
+    }
+    .upload-box {
+      border: 2px dashed #E5E7EB;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .upload-box:hover {
+      border-color: #17B978;
+    }
+    .form-control.is-invalid ~ .upload-box {
+      border-color: #ef4444 !important;
+    }
+  </style>
+</head>
+
+<body class="bg-white">
+  <main class="container-custom py-5 min-vh-100 d-flex align-items-center">
+    <div class="row w-100 g-5 align-items-stretch">
+      
+      <!-- Left Column: Image Panel -->
+      <div class="col-lg-5 d-none d-lg-block">
+        <div class="rounded-4 overflow-hidden position-relative" style="position: sticky; top: 3rem; height: calc(100vh - 6rem);">
+          <div id="organizerCarousel" class="carousel slide h-100" data-bs-ride="carousel">
+            <div class="carousel-indicators mb-4">
+              <button type="button" data-bs-target="#organizerCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#organizerCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#organizerCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner h-100">
+              <div class="carousel-item active h-100">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Organizer Visual 1">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Organizer Visual 2">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Organizer Visual 3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#organizerCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#organizerCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Form Panel -->
+      <div class="col-lg-7 d-flex flex-column justify-content-center">
+        <div class="w-100 mx-auto" style="max-width: 600px;">
+          
+          <!-- Brand Top Right -->
+          <div class="d-flex justify-content-end mb-4">
+            <a href="../index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+              <img src="../assets/logo.SVG" alt="SyncEvent" height="56">
+            </a>
+          </div>
+
+          <!-- Success State (Hidden by default) -->
+          <div id="successState" class="d-none text-center py-5">
+            <div class="d-inline-flex align-items-center justify-content-center bg-success-subtle text-success rounded-circle mb-4" style="width: 80px; height: 80px;">
+              <i data-lucide="check" width="40" height="40"></i>
+            </div>
+            <h2 class="fw-bold text-neutral-900 mb-3">Application Submitted</h2>
+            <p class="text-neutral-400 mb-5 mx-auto" style="max-width: 400px;">
+              Thank you for applying! Our team will review your details and get back to you within 24-48 hours.
+            </p>
+            <a href="../index.html" class="btn btn-primary rounded-pill px-5">Go to Dashboard</a>
+          </div>
+
+          <!-- Main Form Container -->
+          <div id="formContainer">
+            <!-- Heading -->
+            <div class="mb-4">
+              <h1 class="h2 fw-bold text-neutral-900 mb-2">Become an Organizer</h1>
+              <p class="text-neutral-400 mb-0" id="stepSubtext">Apply to host and manage events on SyncEvent. Our team will review your application.</p>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="stepper">
+              <div class="stepper-progress" id="stepperProgress"></div>
+              
+              <div class="step-item active" id="stepIndicator1">
+                <div class="step-circle">1</div>
+                <span class="step-label">Account</span>
+              </div>
+              <div class="step-item" id="stepIndicator2">
+                <div class="step-circle">2</div>
+                <span class="step-label">Organizer</span>
+              </div>
+              <div class="step-item" id="stepIndicator3">
+                <div class="step-circle">3</div>
+                <span class="step-label">Verification</span>
+              </div>
+            </div>
+
+            <form id="organizerForm" novalidate>
+              <!-- STEP 1: Account -->
+              <div id="step1">
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900">First Name</label>
+                    <input type="text" class="form-control" placeholder="John" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Doe" required>
+                  </div>
+                </div>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900">Organization Name</label>
+                    <input type="text" class="form-control" placeholder="Acme Events" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900">Work Email</label>
+                    <input type="email" class="form-control" placeholder="john@acme.com" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+                  </div>
+                </div>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900">Password</label>
+                    <div class="input-group has-validation">
+                      <input type="password" class="form-control" placeholder="••••••••" required minlength="6">
+                      <span class="input-group-text bg-white border-start-0 text-neutral-400 toggle-password" style="cursor: pointer">
+                        <i data-lucide="eye-off"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900">Confirm Password</label>
+                    <div class="input-group has-validation">
+                      <input type="password" class="form-control" placeholder="••••••••" required minlength="6">
+                      <span class="input-group-text bg-white border-start-0 text-neutral-400 toggle-password" style="cursor: pointer">
+                        <i data-lucide="eye-off"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="termsOrg" required>
+                    <label class="form-check-label text-neutral-900" for="termsOrg">
+                      I agree to all the <a href="#" class="text-danger text-decoration-none fw-medium">Terms</a> and <a href="#" class="text-danger text-decoration-none fw-medium">Privacy Policies</a>
+                    </label>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary w-100 rounded-pill mb-4" id="orgBtnNext1">
+                  Next: Organization
+                  <i data-lucide="arrow-right" width="20" height="20" class="ms-1"></i>
+                </button>
+                <div class="text-center mb-4">
+                  <span class="text-neutral-400">Already have an account? <a href="login.html" class="text-primary text-decoration-none fw-medium">Login</a></span>
+                </div>
+              </div>
+
+              <!-- STEP 2: Organizer Details -->
+              <div id="step2" class="d-none">
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900">Organization Type</label>
+                    <select class="form-select" required>
+                      <option value="" selected disabled>Select Type</option>
+                      <option>Corporation</option>
+                      <option>Non-Profit</option>
+                      <option>Educational</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900">Industry</label>
+                    <select class="form-select" required>
+                      <option value="" selected disabled>Select Industry</option>
+                      <option>Technology</option>
+                      <option>Entertainment</option>
+                      <option>Education</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900 small">Organization Size</label>
+                    <select class="form-select bg-neutral-50 text-neutral-900" required>
+                      <option selected>1-10 Employees</option>
+                      <option>11-50 Employees</option>
+                      <option>50+ Employees</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900 small">Website URL</label>
+                    <input type="url" class="form-control bg-neutral-50" placeholder="https://" required>
+                  </div>
+                </div>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900 small">Country</label>
+                    <input type="text" class="form-control bg-neutral-50" placeholder="India" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-medium text-neutral-900 small">City</label>
+                    <input type="text" class="form-control bg-neutral-50" placeholder="Coimbatore" required>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label class="form-label fw-medium text-neutral-900 small">Organization Description</label>
+                  <textarea class="form-control bg-neutral-50" rows="3" placeholder="Tell us about your organization..." required></textarea>
+                </div>
+                <div class="d-flex gap-3">
+                  <button type="button" class="btn btn-outline-light border-neutral-100 text-neutral-900 rounded-pill px-4" id="orgBtnBack1">Back</button>
+                  <button type="button" class="btn btn-primary flex-grow-1 rounded-pill py-2 fw-medium" id="orgBtnNext2">Next: Verification</button>
+                </div>
+              </div>
+
+              <div id="step3" class="d-none">
+                <div class="mb-4">
+                  <h6 class="fw-bold text-neutral-900 mb-3">Contact Verification</h6>
+                  <div class="mb-3">
+                    <label class="form-label fw-medium text-neutral-900 small">Official Phone Number</label>
+                    <input type="tel" class="form-control bg-neutral-50" placeholder="+91 98765 43210" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label fw-medium text-neutral-900 small">Business Registration Document</label>
+                    <div class="position-relative">
+                      <input type="file" class="form-control position-absolute top-0 start-0 w-100 h-100 opacity-0 z-2" style="cursor: pointer;" required>
+                      <div class="upload-box">
+                        <i data-lucide="upload-cloud" class="text-primary mb-2" width="24" height="24"></i>
+                        <p class="small text-neutral-400 mb-0">Click or drag to upload</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label fw-medium text-neutral-900 small">Tax ID Document</label>
+                    <div class="position-relative">
+                      <input type="file" class="form-control position-absolute top-0 start-0 w-100 h-100 opacity-0 z-2" style="cursor: pointer;" required>
+                      <div class="upload-box">
+                        <i data-lucide="file-text" class="text-primary mb-2" width="24" height="24"></i>
+                        <p class="small text-neutral-400 mb-0">Click or drag to upload</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <h6 class="fw-bold text-neutral-900 mb-3">Identity Verification</h6>
+                  <div class="mb-3">
+                    <label class="form-label fw-medium text-neutral-900 small">Government ID Upload</label>
+                    <div class="position-relative">
+                      <input type="file" class="form-control position-absolute top-0 start-0 w-100 h-100 opacity-0 z-2" style="cursor: pointer;" required>
+                      <div class="upload-box">
+                        <i data-lucide="user-check" class="text-primary mb-2" width="24" height="24"></i>
+                        <p class="small text-neutral-400 mb-0">Click or drag to upload</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label fw-medium text-neutral-900 small">LinkedIn Profile URL</label>
+                    <input type="url" class="form-control bg-neutral-50" placeholder="https://linkedin.com/in/..." required>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="confirmDetails" required>
+                    <label class="form-check-label small text-neutral-500" for="confirmDetails">
+                      I confirm all details provided are accurate
+                    </label>
+                  </div>
+                </div>
+                <div class="d-flex gap-3">
+                  <button type="button" class="btn btn-outline-light border-neutral-100 text-neutral-900 rounded-pill px-4" id="orgBtnBack2">Back</button>
+                  <button type="submit" class="btn btn-primary flex-grow-1 rounded-pill py-2 fw-medium" id="orgBtnSubmit">Submit Application</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script type="module" src="../js/main.js"></script>
+</body>
+
+</html>

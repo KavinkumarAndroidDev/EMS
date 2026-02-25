@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign Up - SyncEvent</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="icon" href="../assets/favicon.svg" type="image/x-icon">
+</head>
+
+<body class="bg-white">
+  <main class="container-custom py-5 min-vh-100 d-flex align-items-center">
+    <div class="row w-100 g-5 align-items-stretch">
+      
+      <!-- 2. Left Column: Image Panel -->
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="rounded-4 overflow-hidden position-relative" style="position: sticky; top: 3rem; height: calc(100vh - 6rem);">
+          <div id="signupCarousel" class="carousel slide h-100" data-bs-ride="carousel">
+            <div class="carousel-indicators mb-4">
+              <button type="button" data-bs-target="#signupCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#signupCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#signupCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner h-100">
+              <div class="carousel-item active h-100">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Signup Visual 1">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Signup Visual 2">
+              </div>
+              <div class="carousel-item h-100">
+                <img src="../assets/about_the_eif.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Signup Visual 3">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#signupCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#signupCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Right Column: Signup Form Panel -->
+      <div class="col-lg-6 d-flex flex-column justify-content-center">
+        <div class="w-100 mx-auto" style="max-width: 520px;">
+          
+          <!-- 3.1 Brand Placement (Top Right) -->
+          <div class="d-flex justify-content-end mb-5">
+            <a href="../index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+              <img src="../assets/logo.SVG" alt="SyncEvent" height="56">
+            </a>
+          </div>
+
+          <!-- 3.2 Heading Section -->
+          <div class="mb-4">
+            <h1 class="h2 fw-bold text-neutral-900 mb-2">Sign up</h1>
+            <p class="text-neutral-400 mb-0">Let’s get you all set up so you can access your personal account.</p>
+          </div>
+
+          <!-- 4. Form Structure -->
+          <form id="signupForm" novalidate>
+            <!-- 4.1 Row 1: Name -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-medium text-neutral-900">First Name</label>
+                <input type="text" class="form-control" placeholder="John" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-medium text-neutral-900">Last Name</label>
+                <input type="text" class="form-control" placeholder="Doe" required>
+              </div>
+            </div>
+
+            <!-- 4.2 Row 2: Email & Phone -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label fw-medium text-neutral-900">Email</label>
+                <input type="email" class="form-control" placeholder="john@example.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-medium text-neutral-900">Phone Number</label>
+                <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
+
+            <!-- 4.3 Row 3: Password -->
+            <div class="mb-3">
+              <label class="form-label fw-medium text-neutral-900">Password</label>
+              <div class="input-group has-validation">
+                <input type="password" class="form-control" placeholder="••••••••" required minlength="6">
+                <span class="input-group-text bg-white border-start-0 text-neutral-400 toggle-password" style="cursor: pointer">
+                  <i data-lucide="eye-off"></i>
+                </span>
+              </div>
+              <!-- Password Strength Meter -->
+              <div class="mt-2 d-none" id="passwordStrength">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <ul class="list-unstyled mt-2 mb-0 small text-neutral-400" style="font-size: 0.75rem;">
+                  <li id="req-length"><i data-lucide="circle" width="10" height="10" class="me-1"></i> At least 6 characters</li>
+                  <li id="req-upper"><i data-lucide="circle" width="10" height="10" class="me-1"></i> One uppercase letter</li>
+                  <li id="req-lower"><i data-lucide="circle" width="10" height="10" class="me-1"></i> One lowercase letter</li>
+                  <li id="req-special"><i data-lucide="circle" width="10" height="10" class="me-1"></i> One special character</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 4.4 Row 4: Confirm Password -->
+            <div class="mb-3">
+              <label class="form-label fw-medium text-neutral-900">Confirm Password</label>
+              <div class="input-group has-validation">
+                <input type="password" class="form-control" placeholder="••••••••" required minlength="6">
+                <span class="input-group-text bg-white border-start-0 text-neutral-400 toggle-password" style="cursor: pointer">
+                  <i data-lucide="eye-off"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- 5. Terms Agreement Row -->
+            <div class="mb-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="terms" required>
+                <label class="form-check-label text-neutral-900" for="terms">
+                  I agree to all the <a href="#" class="text-danger text-decoration-none fw-medium">Terms</a> and <a href="#" class="text-danger text-decoration-none fw-medium">Privacy Policies</a>
+                </label>
+              </div>
+            </div>
+
+            <!-- 6. Primary CTA Button -->
+            <button type="submit" class="btn btn-primary w-100 rounded-pill mb-4">Create account</button>
+
+            <!-- 7. Login Redirect Text -->
+            <div class="text-center mb-4">
+              <span class="text-neutral-400">Already have an account? <a href="login.html" class="text-primary text-decoration-none fw-medium">Login</a></span>
+            </div>
+
+            <!-- 8. Social Signup Section -->
+            <div class="d-flex align-items-center gap-3 mb-4">
+              <div class="flex-grow-1 border-top border-neutral-100"></div>
+              <span class="text-neutral-400 small">Or Sign up with</span>
+              <div class="flex-grow-1 border-top border-neutral-100"></div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col">
+                <button type="button" class="btn btn-outline-light border-neutral-100 w-100 text-neutral-900">
+                  <i data-lucide="facebook" width="20" height="20"></i>
+                </button>
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-outline-light border-neutral-100 w-100 text-neutral-900">
+                  <i data-lucide="chrome" width="20" height="20"></i>
+                </button>
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-outline-light border-neutral-100 w-100 text-neutral-900">
+                  <i data-lucide="apple" width="20" height="20"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script type="module" src="../js/main.js"></script>
+</body>
+
+</html>

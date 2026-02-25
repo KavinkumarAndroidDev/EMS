@@ -1,0 +1,95 @@
+.bg-neutral-50 {
+  background-color: $gray-50;
+}
+
+.text-neutral-400 {
+  color: $gray-400;
+}
+
+.text-neutral-900 {
+  color: $gray-900;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+.icon-container {
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba($primary, 0.12);
+  color: $primary;
+}
+
+.shadow-card {
+  box-shadow: $box-shadow;
+}
+
+.shadow-modal {
+  box-shadow: $box-shadow-lg;
+}
+
+.radius-sm {
+  border-radius: 0.5rem;
+}
+
+.radius-lg {
+  border-radius: 1rem;
+}
+
+.radius-pill {
+  border-radius: $border-radius-pill;
+}
+
+.card-custom {
+  border-radius: 1rem;
+  box-shadow: $box-shadow;
+  border: 1px solid $gray-100;
+  padding: 2rem;
+  background: $white;
+}
+
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .component-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.organizercta-neutral-900 {
+  background-color: rgba(17, 24, 39, 0.95);
+}
+
+.organizercta-neutral-900 .cta-icon {
+  color: #cbd5e1;
+}
+
+.organizercta-neutral-900 h6 {
+  font-size: 15px;
+}
+
+.organizercta-neutral-900 .small {
+  font-size: 14px;
+}
+
+
+.bg-neutral-900 {
+  background-color: #111827; /* or any dark color you prefer */
+}

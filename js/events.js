@@ -1,0 +1,218 @@
+import { state } from './state.js';
+
+export function initializeEvents() {
+    const events = state.events;
+
+    // Homepage: Featured Events
+    const featuredContainer = document.getElementById('featured-events');
+    if (featuredContainer && events) {
+        const featured = events.filter(e => e.status.isFeatured).slice(0, 5);
+        featuredContainer.innerHTML = featured.map(e => createEventCard(e)).join('');
+    }
+
+    // Events Page: All Events
+    const eventsGrid = document.getElementById('events-grid');
+    if (eventsGrid && events) {
+        setupPagination(events);
+    }
+
+    // Single Event Page
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventId = urlParams.get('id');
+    if (eventId && events) {
+        const event = events.find(e => e.id === eventId);
+        if (event) {
+            populateSingleEvent(event);
+        }
+    }
+}
+
+export function createEventCard(event) {
+    const minPrice = Math.min(...event.tickets.map(t => t.price));
+    const date = new Date(event.schedule.startDateTime);
+    const dateStr = date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    const timeStr = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    
+    const path = window.location.pathname;
+    let link = 'html/events/event-details.html?id=' + event.id;
+
+    if (path.includes('/html/events/')) {
+        link = 'event-details.html?id=' + event.id;
+    } else if (path.includes('/html/')) {
+        link = 'events/event-details.html?id=' + event.id;
+    }
+
+    return `
+    <div class="col">
+        <div class="card border-0 shadow-sm h-100 event-card" style="border-radius:16px; overflow:hidden;">
+            <img src="${event.media.thumbnail}" class="card-img-top" style="height:200px; object-fit:cover;" alt="${event.title}">
+            <div class="card-body p-3 d-flex flex-column">
+                <div class="text-primary fw-semibold small mb-2">
+                    ${dateStr} • ${timeStr}
+                </div>
+                <h6 class="fw-semibold text-neutral-900 mb-2" style="line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">
+                    ${event.title}
+                </h6>
+                <p class="text-neutral-400 small text-truncate mb-2">
+                    ${event.venue.name}, ${event.venue.address.city}
+                </p>
+                <div class="fw-semibold text-neutral-900 small mt-auto">
+                    ${minPrice === 0 ? 'Free' : '₹' + minPrice + ' onwards'}
+                </div>
+            </div>
+            <a href="${link}" class="stretched-link"></a>
+        </div>
+    </div>
+    `;
+}
+
+export function populateSingleEvent(event) {
+    const setText = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+    };
+
+    setText('event-title', event.title);
+    if(event.category) {
+        setText('event-category', event.category.name);
+        const iconEl = document.getElementById('event-category-icon');
+        // Check if iconEl exists and hasn't been replaced by SVG yet, or is an SVG
+        if (iconEl) {
+            const newIcon = document.createElement('i');
+            newIcon.id = 'event-category-icon';
+            newIcon.setAttribute('data-lucide', event.category.icon);
+            // Preserve classes if any (e.g. text-primary)
+            newIcon.className = iconEl.getAttribute('class') || '';
+            iconEl.replaceWith(newIcon);
+            if (window.lucide) lucide.createIcons({ root: newIcon.parentElement });
+        }
+    }
+    
+    const startDate = new Date(event.schedule.startDateTime);
+    const endDate = new Date(event.schedule.endDateTime);
+    const dateStr = `${startDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}, ${startDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })} – ${endDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}`;
+    setText('event-date', dateStr);
+    setText('event-location', `${event.venue.name}, ${event.venue.address.city}`);
+    
+    const minPrice = Math.min(...event.tickets.map(t => t.price));
+    setText('event-price', minPrice === 0 ? 'Free' : `₹${minPrice}`);
+    
+    setText('event-description', event.fullDescription);
+    setText('venue-name', event.venue.name);
+    setText('venue-address', `${event.venue.address.street}, ${event.venue.address.city}, ${event.venue.address.pincode}`);
+
+    const heroImg = document.getElementById('event-hero-image');
+    if (heroImg) heroImg.src = event.media.thumbnail;
+    
+    setText('breadcrumb-active', event.title);
+    document.title = `${event.title} - SyncEvent`;
+
+    const bookBtn = document.querySelector('.btn-primary');
+    if (bookBtn && bookBtn.textContent.includes('Book tickets')) {
+        bookBtn.onclick = () => window.location.href = `booking.html?id=${event.id}`;
+    }
+}
+
+function setupPagination(events) {
+    const itemsPerPage = 9;
+    let currentPage = 1;
+    let paginationContainer = document.getElementById('pagination-controls');
+    
+    if (!paginationContainer) return;
+
+    const newContainer = paginationContainer.cloneNode(false);
+    paginationContainer.parentNode.replaceChild(newContainer, paginationContainer);
+    paginationContainer = newContainer;
+
+    const renderPage = (page) => {
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageEvents = events.slice(start, end);
+        
+        const eventsGrid = document.getElementById('events-grid');
+        if (eventsGrid) {
+            eventsGrid.innerHTML = pageEvents.map(e => createEventCard(e)).join('');
+            if (window.lucide) lucide.createIcons();
+        }
+        renderControls(page);
+    };
+
+    const renderControls = (page) => {
+        const totalPages = Math.ceil(events.length / itemsPerPage);
+        let html = '';
+        html += `<button class="pagination-btn" data-page="${page - 1}" ${page === 1 ? 'disabled' : ''}><i data-lucide="chevron-left" width="16" height="16"></i></button>`;
+        for (let i = 1; i <= totalPages; i++) {
+            html += `<button class="pagination-btn ${i === page ? 'active' : ''}" data-page="${i}">${i}</button>`;
+        }
+        html += `<button class="pagination-btn" data-page="${page + 1}" ${page === totalPages ? 'disabled' : ''}><i data-lucide="chevron-right" width="16" height="16"></i></button>`;
+        paginationContainer.innerHTML = html;
+        if (window.lucide) lucide.createIcons();
+    };
+
+    paginationContainer.addEventListener('click', (e) => {
+        const btn = e.target.closest('.pagination-btn');
+        if (btn && !btn.disabled && !btn.classList.contains('active')) {
+            const newPage = parseInt(btn.dataset.page);
+            if (newPage && newPage !== currentPage) {
+                currentPage = newPage;
+                renderPage(currentPage);
+                document.getElementById('events-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+
+    renderPage(1);
+}
+
+export function setupGlobalInteractions() {
+    // Search Inputs
+    document.querySelectorAll('input[type="search"]').forEach(input => {
+        input.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            if (document.getElementById('events-grid')) {
+                filterEvents(query);
+            }
+        });
+    });
+
+    // Filter Pills (Visual Toggle)
+    document.querySelectorAll('.filter-pill').forEach(pill => {
+        pill.addEventListener('click', function() {
+            const group = this.closest('.d-flex');
+            if (group) {
+                group.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+            }
+            if (document.getElementById('events-grid')) filterEvents();
+        });
+    });
+    
+    // Sidebar Checkboxes
+    document.querySelectorAll('.filter-sidebar input[type="checkbox"]').forEach(box => {
+        box.addEventListener('change', () => {
+            if (document.getElementById('events-grid')) filterEvents();
+        });
+    });
+}
+
+function filterEvents(query) {
+    if (!state.events) return;
+    
+    let filtered = state.events;
+    
+    // 1. Search Query
+    if (typeof query !== 'string') {
+        const searchInput = document.querySelector('input[type="search"]');
+        query = searchInput ? searchInput.value.toLowerCase() : '';
+    }
+    
+    if (query) {
+        filtered = filtered.filter(e => 
+            e.title.toLowerCase().includes(query) || 
+            e.venue.address.city.toLowerCase().includes(query) ||
+            (e.category && e.category.name.toLowerCase().includes(query))
+        );
+    }
+
+    setupPagination(filtered);
+}
