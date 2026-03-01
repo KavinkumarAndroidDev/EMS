@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notifications - SyncEvent Organizer</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/x-icon">
+  
+</head>
+<body>
+<div class="organizer-layout">
+  <aside class="organizer-sidebar">
+    <div class="sidebar-brand"><img src="../../assets/logo.SVG" alt="SyncEvent"></div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="sidebar-nav-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+      <a href="my-events.html" class="sidebar-nav-item"><i data-lucide="calendar-days"></i> My Events</a>
+      <a href="create-event.html" class="sidebar-nav-item"><i data-lucide="plus-circle"></i> Create Event</a>
+      <a href="ticket-management.html" class="sidebar-nav-item"><i data-lucide="ticket"></i> Ticket Management</a>
+      <a href="registrations.html" class="sidebar-nav-item"><i data-lucide="users"></i> Registrations</a>
+      <a href="reports.html" class="sidebar-nav-item"><i data-lucide="bar-chart-2"></i> Reports</a>
+      <a href="notifications.html" class="sidebar-nav-item active"><i data-lucide="bell"></i> Notifications<span class="badge bg-danger ms-auto" style="font-size:0.65rem;padding:2px 6px;border-radius:10px;">3</span></a>
+      <a href="profile.html" class="sidebar-nav-item"><i data-lucide="user-circle"></i> Profile</a>
+    </nav>
+    <div class="sidebar-footer"><a href="#" class="sidebar-nav-item text-danger"><i data-lucide="log-out"></i> Logout</a></div>
+  </aside>
+
+  <div class="organizer-main">
+    <div class="organizer-topbar">
+      <h5>Notifications</h5>
+      <div class="topbar-user">
+        <div class="user-avatar">JD</div>
+        <div class="user-info">
+          <div class="name">John Doe</div>
+          <div class="role">Organizer</div>
+        </div>
+        <i data-lucide="chevron-down" style="width:14px;height:14px;color:#6c757d;"></i><div style="font-size:0.75rem;color:#6c757d;line-height:1.2;">Organizer</div></div>
+        <i data-lucide="chevron-down" style="width:14px;height:14px;color:#6c757d;"></i>
+      </div>
+    </div>
+
+    <div class="organizer-content">
+      <div class="d-flex align-items-start justify-content-between mb-4">
+        <div>
+          <h4 class="fw-bold mb-1" style="font-size:1.1rem;">Notifications</h4>
+          <p class="text-neutral-400 mb-0" style="font-size:0.85rem;">Stay updated on your event activities</p>
+        </div>
+        <a href="#" style="font-size:0.82rem;color:#1a7341;text-decoration:none;font-weight:500;">Mark all as read</a>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="d-flex gap-2 mb-4">
+        <button class="btn btn-sm btn-primary rounded-pill px-3">All Notifications</button>
+        <button class="btn btn-sm btn-outline-secondary rounded-pill px-3">Cancel All</button>
+      </div>
+
+      <div class="org-card">
+        <!-- Unread -->
+        <div class="notif-item unread">
+          <div class="notif-icon" style="background:#dbeafe;"><i data-lucide="indian-rupee" style="width:16px;height:16px;color:#1e40af;"></i></div>
+          <div class="notif-content">
+            <div class="notif-title">New Payment Received</div>
+            <div class="notif-desc">₹1,500 payment received for Tech Conference 2026</div>
+            <div class="notif-time">1 hour ago</div>
+          </div>
+          <div class="notif-check"><i data-lucide="check" style="width:14px;height:14px;"></i></div>
+        </div>
+
+        <div class="notif-item unread">
+          <div class="notif-icon" style="background:#d1fae5;"><i data-lucide="user-plus" style="width:16px;height:16px;color:#065f46;"></i></div>
+          <div class="notif-content">
+            <div class="notif-title">New Registration</div>
+            <div class="notif-desc">John Doe registered for Music Festival Summer</div>
+            <div class="notif-time">3 hours ago</div>
+          </div>
+          <div class="notif-check"><i data-lucide="check" style="width:14px;height:14px;"></i></div>
+        </div>
+
+        <div class="notif-item unread">
+          <div class="notif-icon" style="background:#fee2e2;"><i data-lucide="alert-triangle" style="width:16px;height:16px;color:#991b1b;"></i></div>
+          <div class="notif-content">
+            <div class="notif-title">Low Ticket Inventory</div>
+            <div class="notif-desc">Only 20 tickets remaining for The Conference</div>
+            <div class="notif-time">5 hours ago</div>
+          </div>
+          <div class="notif-check"><i data-lucide="check" style="width:14px;height:14px;"></i></div>
+        </div>
+
+        <!-- Read -->
+        <div class="notif-item">
+          <div class="notif-icon" style="background:#e8f5e9;"><i data-lucide="check-circle-2" style="width:16px;height:16px;color:#1a7341;"></i></div>
+          <div class="notif-content">
+            <div class="notif-title">Event Published Successfully</div>
+            <div class="notif-desc">Your event Art Exhibition Opening is now live</div>
+            <div class="notif-time">Yesterday</div>
+          </div>
+          <div class="notif-check" style="color:#1a7341;"><i data-lucide="check-check" style="width:14px;height:14px;"></i></div>
+        </div>
+
+        <div class="notif-item">
+          <div class="notif-icon" style="background:#fef9c3;"><i data-lucide="clock" style="width:16px;height:16px;color:#a16207;"></i></div>
+          <div class="notif-content">
+            <div class="notif-title">Event Approval Pending</div>
+            <div class="notif-desc">Business Networking Event is awaiting admin approval</div>
+            <div class="notif-time">Yesterday</div>
+          </div>
+          <div class="notif-check" style="color:#1a7341;"><i data-lucide="check-check" style="width:14px;height:14px;"></i></div>
+        </div>
+
+        <div class="notif-item">
+          <div class="notif-icon" style="background:#d1fae5;"><i data-lucide="credit-card" style="width:16px;height:16px;color:#065f46;"></i></div>
+          <div class="notif-content">
+            <div class="notif-title">Payment Confirmed</div>
+            <div class="notif-desc">Full payment of ₹5,000 has been processed</div>
+            <div class="notif-time">2 days ago</div>
+          </div>
+          <div class="notif-check" style="color:#1a7341;"><i data-lucide="check-check" style="width:14px;height:14px;"></i></div>
+        </div>
+
+        <div class="notif-item">
+          <div class="notif-icon" style="background:#f3f4f6;"><i data-lucide="star" style="width:16px;height:16px;color:#6b7280;"></i></div>
+          <div class="notif-content">
+            <div class="notif-title">Event Overview</div>
+            <div class="notif-desc">Tech Conference 2026 attendees in today</div>
+            <div class="notif-time">2 days ago</div>
+          </div>
+          <div class="notif-check" style="color:#1a7341;"><i data-lucide="check-check" style="width:14px;height:14px;"></i></div>
+        </div>
+
+        <div class="notif-item">
+          <div class="notif-icon" style="background:#e8f5e9;"><i data-lucide="trophy" style="width:16px;height:16px;color:#1a7341;"></i></div>
+          <div class="notif-content">
+            <div class="notif-title">Milestone Achieved</div>
+            <div class="notif-desc">You've reached 1,000 total ticket bookings!</div>
+            <div class="notif-time">3 days ago</div>
+          </div>
+          <div class="notif-check" style="color:#1a7341;"><i data-lucide="check-check" style="width:14px;height:14px;"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

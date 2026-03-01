@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registrations - SyncEvent Organizer</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/x-icon">
+  
+</head>
+<body>
+<div class="organizer-layout">
+  <aside class="organizer-sidebar">
+    <div class="sidebar-brand"><img src="../../assets/logo.SVG" alt="SyncEvent"></div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="sidebar-nav-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+      <a href="my-events.html" class="sidebar-nav-item"><i data-lucide="calendar-days"></i> My Events</a>
+      <a href="create-event.html" class="sidebar-nav-item"><i data-lucide="plus-circle"></i> Create Event</a>
+      <a href="ticket-management.html" class="sidebar-nav-item"><i data-lucide="ticket"></i> Ticket Management</a>
+      <a href="registrations.html" class="sidebar-nav-item active"><i data-lucide="users"></i> Registrations</a>
+      <a href="reports.html" class="sidebar-nav-item"><i data-lucide="bar-chart-2"></i> Reports</a>
+      <a href="notifications.html" class="sidebar-nav-item"><i data-lucide="bell"></i> Notifications<span class="badge bg-danger ms-auto" style="font-size:0.65rem;padding:2px 6px;border-radius:10px;">3</span></a>
+      <a href="profile.html" class="sidebar-nav-item"><i data-lucide="user-circle"></i> Profile</a>
+    </nav>
+    <div class="sidebar-footer"><a href="#" class="sidebar-nav-item text-danger"><i data-lucide="log-out"></i> Logout</a></div>
+  </aside>
+
+  <div class="organizer-main">
+    <div class="organizer-topbar">
+      <h5>Registrations</h5>
+      <div class="topbar-user">
+        <div class="user-avatar">JD</div>
+        <div class="user-info">
+          <div class="name">John Doe</div>
+          <div class="role">Organizer</div>
+        </div>
+        <i data-lucide="chevron-down" style="width:14px;height:14px;color:#6c757d;"></i><div style="font-size:0.75rem;color:#6c757d;line-height:1.2;">Organizer</div></div>
+        <i data-lucide="chevron-down" style="width:14px;height:14px;color:#6c757d;"></i>
+      </div>
+    </div>
+
+    <div class="organizer-content">
+      <div class="d-flex align-items-start justify-content-between mb-4">
+        <div>
+          <h4 class="fw-bold mb-1" style="font-size:1.1rem;">All Registrations</h4>
+          <p class="text-neutral-400 mb-0" style="font-size:0.85rem;">View and manage registrations across all events</p>
+        </div>
+        <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2">
+          <i data-lucide="download" style="width:14px;height:14px;"></i> Export
+        </button>
+      </div>
+
+      <!-- Stats row -->
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+          <div class="reg-stat"><div class="num">8</div><div class="lbl">Total Registrations</div></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="reg-stat"><div class="num">6</div><div class="lbl">Confirmed</div></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="reg-stat"><div class="num">1</div><div class="lbl">Pending</div></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="reg-stat"><div class="num" style="color:#1a7341;">₹850</div><div class="lbl">Total Revenue</div></div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="org-card">
+        <div class="p-3">
+          <div class="row g-2 align-items-end">
+            <div class="col-md-3">
+              <label class="form-label" style="font-size:0.78rem;font-weight:600;">Event</label>
+              <select class="form-select form-select-sm">
+                <option>All Events</option>
+                <option>Tech Conference 2026</option>
+                <option>Music Festival Summer</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label" style="font-size:0.78rem;font-weight:600;">Search or email</label>
+              <div class="input-group input-group-sm">
+                <span class="input-group-text bg-white border-end-0"><i data-lucide="search" style="width:13px;height:13px;color:#9ca3af;"></i></span>
+                <input type="text" class="form-control border-start-0" placeholder="Search...">
+              </div>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label" style="font-size:0.78rem;font-weight:600;">Start Date</label>
+              <input type="date" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-2">
+              <label class="form-label" style="font-size:0.78rem;font-weight:600;">End Date</label>
+              <input type="date" class="form-control form-control-sm">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registrations Table -->
+      <div class="org-card">
+        <div class="org-card-header">
+          <h6>Registrations</h6>
+          <span style="font-size:0.78rem;color:#6c757d;">8 total</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="organizer-table">
+            <thead>
+              <tr>
+                <th>Attendee</th>
+                <th>Event</th>
+                <th>Ticket</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Total Revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="fw-medium">John Smith</div>
+                  <div style="font-size:0.75rem;color:#6c757d;">john@example.com</div>
+                </td>
+                <td>Tech Conference 2026</td>
+                <td>General Admission</td>
+                <td><span class="badge-status badge-free">Free</span></td>
+                <td>Mar 12, 2026</td>
+                <td class="fw-semibold text-success">₹0</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="fw-medium">Sarah Johnson</div>
+                  <div style="font-size:0.75rem;color:#6c757d;">sarah@example.com</div>
+                </td>
+                <td>Tech Conference 2026</td>
+                <td>VIP Pass</td>
+                <td><span class="badge-status badge-paid">Paid</span></td>
+                <td>Mar 10, 2026</td>
+                <td class="fw-semibold text-success">₹1,500</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="fw-medium">Mike Brown</div>
+                  <div style="font-size:0.75rem;color:#6c757d;">mike@example.com</div>
+                </td>
+                <td>Music Festival Summer</td>
+                <td>Off Pass</td>
+                <td><span class="badge-status badge-free">Free</span></td>
+                <td>Mar 9, 2026</td>
+                <td class="fw-semibold text-success">₹0</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="fw-medium">Emily Davis</div>
+                  <div style="font-size:0.75rem;color:#6c757d;">emily@example.com</div>
+                </td>
+                <td>Tech Conference 2026</td>
+                <td>Student Ticket</td>
+                <td><span class="badge-status badge-paid">Paid</span></td>
+                <td>Mar 8, 2026</td>
+                <td class="fw-semibold text-success">₹250</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="fw-medium">Music Festival Summer</div>
+                  <div style="font-size:0.75rem;color:#6c757d;">david@example.com</div>
+                </td>
+                <td>Music Festival Summer</td>
+                <td>General Admission</td>
+                <td><span class="badge-status badge-pending">Pending</span></td>
+                <td>Mar 7, 2026</td>
+                <td class="fw-semibold" style="color:#a16207;">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

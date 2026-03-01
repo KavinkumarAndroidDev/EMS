@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - SyncEvent Organizer</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/x-icon">
+  
+</head>
+<body>
+<div class="organizer-layout">
+
+  <!-- Sidebar -->
+  <aside class="organizer-sidebar">
+    <div class="sidebar-brand">
+      <img src="../../assets/logo.SVG" alt="SyncEvent">
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="sidebar-nav-item active">
+        <i data-lucide="layout-dashboard"></i> Dashboard
+      </a>
+      <a href="my-events.html" class="sidebar-nav-item">
+        <i data-lucide="calendar-days"></i> My Events
+      </a>
+      <a href="create-event.html" class="sidebar-nav-item">
+        <i data-lucide="plus-circle"></i> Create Event
+      </a>
+      <a href="ticket-management.html" class="sidebar-nav-item">
+        <i data-lucide="ticket"></i> Ticket Management
+      </a>
+      <a href="registrations.html" class="sidebar-nav-item">
+        <i data-lucide="users"></i> Registrations
+      </a>
+      <a href="reports.html" class="sidebar-nav-item">
+        <i data-lucide="bar-chart-2"></i> Reports
+      </a>
+      <a href="notifications.html" class="sidebar-nav-item">
+        <i data-lucide="bell"></i> Notifications
+        <span class="badge bg-danger ms-auto" style="font-size:0.65rem;padding:2px 6px;border-radius:10px;">3</span>
+      </a>
+      <a href="profile.html" class="sidebar-nav-item">
+        <i data-lucide="user-circle"></i> Profile
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="#" class="sidebar-nav-item text-danger">
+        <i data-lucide="log-out"></i> Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="organizer-main">
+    <!-- Topbar -->
+    <div class="organizer-topbar">
+      <h5>Dashboard</h5>
+      <div class="topbar-user">
+        <div class="user-avatar">JD</div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:600;line-height:1.2;">John Doe</div>
+          <div style="font-size:0.75rem;color:#6c757d;line-height:1.2;">Organizer</div>
+        </div>
+        <i data-lucide="chevron-down" style="width:14px;height:14px;color:#6c757d;"></i>
+      </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="organizer-content">
+
+      <!-- Stat Cards Row -->
+      <div class="row g-3 mb-4">
+        <div class="col-sm-6 col-xl-3">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#e8f5e9;">
+              <i data-lucide="calendar" style="width:20px;height:20px;color:#1a7341;"></i>
+            </div>
+            <div class="stat-value">24</div>
+            <div class="stat-label">Total Events</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#dbeafe;">
+              <i data-lucide="users" style="width:20px;height:20px;color:#1e40af;"></i>
+            </div>
+            <div class="stat-value">1,245</div>
+            <div class="stat-label">Total Attendees</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#fef9c3;">
+              <i data-lucide="indian-rupee" style="width:20px;height:20px;color:#a16207;"></i>
+            </div>
+            <div class="stat-value">₹48,320</div>
+            <div class="stat-label">Total Revenue</div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#fee2e2;">
+              <i data-lucide="clock" style="width:20px;height:20px;color:#991b1b;"></i>
+            </div>
+            <div class="stat-value">8</div>
+            <div class="stat-label">Upcoming Events</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Events + Right Column -->
+      <div class="row g-3 mb-4">
+        <div class="col-lg-8">
+          <div class="org-card h-100">
+            <div class="org-card-header">
+              <h6>Recent Events</h6>
+              <a href="my-events.html" class="link-subtle">View all →</a>
+            </div>
+            <div style="overflow-x:auto;">
+              <table class="organizer-table">
+                <thead>
+                  <tr>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Revenue</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="fw-medium">Tech Conference 2026</td>
+                    <td>Mar 10, 2026</td>
+                    <td><span class="badge-status badge-upcoming">Upcoming</span></td>
+                    <td>₹12,400</td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-secondary px-2 py-1"><i data-lucide="pencil" style="width:12px;height:12px;"></i></button>
+                        <button class="btn btn-sm btn-outline-danger px-2 py-1"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="fw-medium">Music Festival Summer</td>
+                    <td>Apr 15, 2026</td>
+                    <td><span class="badge-status badge-upcoming">Upcoming</span></td>
+                    <td>₹24,500</td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-secondary px-2 py-1"><i data-lucide="pencil" style="width:12px;height:12px;"></i></button>
+                        <button class="btn btn-sm btn-outline-danger px-2 py-1"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="fw-medium">Startup Networking Night</td>
+                    <td>Mar 20, 2026</td>
+                    <td><span class="badge-status badge-active">Active</span></td>
+                    <td>₹5,200</td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-secondary px-2 py-1"><i data-lucide="pencil" style="width:12px;height:12px;"></i></button>
+                        <button class="btn btn-sm btn-outline-danger px-2 py-1"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="fw-medium">Business Networking Event</td>
+                    <td>May 3, 2026</td>
+                    <td><span class="badge-status badge-upcoming">Upcoming</span></td>
+                    <td>₹3,100</td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-secondary px-2 py-1"><i data-lucide="pencil" style="width:12px;height:12px;"></i></button>
+                        <button class="btn btn-sm btn-outline-danger px-2 py-1"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="fw-medium">Freelance Writer Talks</td>
+                    <td>Feb 12, 2026</td>
+                    <td><span class="badge-status badge-ended">Ended</span></td>
+                    <td>₹3,120</td>
+                    <td>
+                      <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-secondary px-2 py-1"><i data-lucide="pencil" style="width:12px;height:12px;"></i></button>
+                        <button class="btn btn-sm btn-outline-danger px-2 py-1"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <!-- Revenue Snapshot -->
+          <div class="org-card mb-3">
+            <div class="org-card-header">
+              <h6>Revenue Snapshot</h6>
+              <span style="font-size:0.75rem;color:#6c757d;">Last 7 days</span>
+            </div>
+            <div class="org-card-body">
+              <div class="d-flex justify-content-between mb-3">
+                <div>
+                  <div style="font-size:0.75rem;color:#6c757d;">Total Revenue</div>
+                  <div style="font-size:1.4rem;font-weight:700;">₹24,680</div>
+                  <div style="font-size:0.75rem;color:#16a34a;">▲ +12.4%</div>
+                </div>
+                <div>
+                  <div style="font-size:0.75rem;color:#6c757d;">This Month</div>
+                  <div style="font-size:1.4rem;font-weight:700;">₹3,640</div>
+                  <div style="font-size:0.75rem;color:#dc2626;">▼ -3.2%</div>
+                </div>
+              </div>
+              <div class="chart-placeholder"></div>
+            </div>
+          </div>
+
+          <!-- Recent Notifications -->
+          <div class="org-card">
+            <div class="org-card-header">
+              <h6>Recent Notifications</h6>
+              <a href="notifications.html" class="link-subtle">View all</a>
+            </div>
+            <div class="org-card-body" style="padding-top:8px;padding-bottom:8px;">
+              <div class="notif-item">
+                <div class="notif-title">New Registration for Tech Conference 2026</div>
+                <div class="notif-desc">Priya Kumar registered for General Admission</div>
+                <div class="notif-time">2 hrs ago</div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-title">Payment Received</div>
+                <div class="notif-desc">₹1,500 from Music Festival booking</div>
+                <div class="notif-time">4 hrs ago</div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-title">Ticket Sales Exceeded 100+</div>
+                <div class="notif-desc">Congratulations! Your event has reached 100 tickets sold.</div>
+                <div class="notif-time">Yesterday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

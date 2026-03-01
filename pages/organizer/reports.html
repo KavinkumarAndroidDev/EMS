@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reports - SyncEvent Organizer</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/x-icon">
+  
+</head>
+<body>
+<div class="organizer-layout">
+  <aside class="organizer-sidebar">
+    <div class="sidebar-brand"><img src="../../assets/logo.SVG" alt="SyncEvent"></div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="sidebar-nav-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+      <a href="my-events.html" class="sidebar-nav-item"><i data-lucide="calendar-days"></i> My Events</a>
+      <a href="create-event.html" class="sidebar-nav-item"><i data-lucide="plus-circle"></i> Create Event</a>
+      <a href="ticket-management.html" class="sidebar-nav-item"><i data-lucide="ticket"></i> Ticket Management</a>
+      <a href="registrations.html" class="sidebar-nav-item"><i data-lucide="users"></i> Registrations</a>
+      <a href="reports.html" class="sidebar-nav-item active"><i data-lucide="bar-chart-2"></i> Reports</a>
+      <a href="notifications.html" class="sidebar-nav-item"><i data-lucide="bell"></i> Notifications<span class="badge bg-danger ms-auto" style="font-size:0.65rem;padding:2px 6px;border-radius:10px;">3</span></a>
+      <a href="profile.html" class="sidebar-nav-item"><i data-lucide="user-circle"></i> Profile</a>
+    </nav>
+    <div class="sidebar-footer"><a href="#" class="sidebar-nav-item text-danger"><i data-lucide="log-out"></i> Logout</a></div>
+  </aside>
+
+  <div class="organizer-main">
+    <div class="organizer-topbar">
+      <h5>Reports &amp; Analytics</h5>
+      <div class="topbar-user">
+        <div class="user-avatar">JD</div>
+        <div class="user-info">
+          <div class="name">John Doe</div>
+          <div class="role">Organizer</div>
+        </div>
+        <i data-lucide="chevron-down" style="width:14px;height:14px;color:#6c757d;"></i><div style="font-size:0.75rem;color:#6c757d;line-height:1.2;">Organizer</div></div>
+        <i data-lucide="chevron-down" style="width:14px;height:14px;color:#6c757d;"></i>
+      </div>
+    </div>
+
+    <div class="organizer-content">
+      <div class="d-flex align-items-start justify-content-between mb-4 flex-wrap gap-2">
+        <div>
+          <h4 class="fw-bold mb-1" style="font-size:1.1rem;">Reports &amp; Analytics</h4>
+          <p class="text-neutral-400 mb-0" style="font-size:0.85rem;">View performance data and generate reports</p>
+        </div>
+        <button class="btn btn-primary d-flex align-items-center gap-2">
+          <i data-lucide="bar-chart-2" style="width:15px;height:15px;"></i> Report
+        </button>
+      </div>
+
+      <!-- Filters -->
+      <div class="org-card">
+        <div class="p-3">
+          <div class="row g-2 align-items-end">
+            <div class="col-md-3">
+              <label class="form-label" style="font-size:0.78rem;font-weight:600;">Event</label>
+              <select class="form-select form-select-sm"><option>All Events</option></select>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label" style="font-size:0.78rem;font-weight:600;">Date Range</label>
+              <select class="form-select form-select-sm"><option>All time types</option><option>Last 7 days</option><option>Last 30 days</option></select>
+            </div>
+            <div class="col-md-2">
+              <label class="form-label" style="font-size:0.78rem;font-weight:600;">Start</label>
+              <input type="date" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-2">
+              <label class="form-label" style="font-size:0.78rem;font-weight:600;">End</label>
+              <input type="date" class="form-control form-control-sm">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary Stats -->
+      <div class="row g-3 mb-3">
+        <div class="col-6 col-xl-3">
+          <div class="stat-card-report">
+            <div class="lbl">Total Revenue</div>
+            <div class="val">₹151,600</div>
+            <div class="trend" style="color:#16a34a;">▲ +8.2%</div>
+          </div>
+        </div>
+        <div class="col-6 col-xl-3">
+          <div class="stat-card-report">
+            <div class="lbl">Total Tickets</div>
+            <div class="val">1,000</div>
+            <div class="trend" style="color:#16a34a;">▲ +12.4%</div>
+          </div>
+        </div>
+        <div class="col-6 col-xl-3">
+          <div class="stat-card-report">
+            <div class="lbl">Avg. Ticket Price</div>
+            <div class="val">₹2,450</div>
+            <div class="trend" style="color:#dc2626;">▼ -2.1%</div>
+          </div>
+        </div>
+        <div class="col-6 col-xl-3">
+          <div class="stat-card-report">
+            <div class="lbl">Total Registrations</div>
+            <div class="val">₹149,150</div>
+            <div class="trend" style="color:#16a34a;">▲ +5.6%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="row g-3 mb-3">
+        <!-- Revenue over time bar chart -->
+        <div class="col-lg-7">
+          <div class="org-card">
+            <div class="org-card-header"><h6>Revenue Over Time</h6></div>
+            <div class="org-card-body">
+              <div class="bar-chart">
+                <div class="bar" style="height:35%"><span class="bar-label">Jan</span></div>
+                <div class="bar" style="height:55%"><span class="bar-label">Feb</span></div>
+                <div class="bar" style="height:42%"><span class="bar-label">Mar</span></div>
+                <div class="bar" style="height:70%"><span class="bar-label">Apr</span></div>
+                <div class="bar" style="height:48%"><span class="bar-label">May</span></div>
+                <div class="bar" style="height:60%"><span class="bar-label">Jun</span></div>
+                <div class="bar" style="height:80%"><span class="bar-label">Jul</span></div>
+                <div class="bar" style="height:65%"><span class="bar-label">Aug</span></div>
+                <div class="bar" style="height:90%"><span class="bar-label">Sep</span></div>
+                <div class="bar" style="height:75%"><span class="bar-label">Oct</span></div>
+                <div class="bar" style="height:88%"><span class="bar-label">Nov</span></div>
+                <div class="bar" style="height:100%"><span class="bar-label">Dec</span></div>
+              </div>
+              <div class="d-flex gap-4 mt-2" style="font-size:0.75rem;color:#6c757d;">
+                <span>— Revenue</span>
+                <span>— Bookings</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Ticket Sales by Type donut -->
+        <div class="col-lg-5">
+          <div class="org-card h-100">
+            <div class="org-card-header"><h6>Ticket Sales by Type</h6></div>
+            <div class="org-card-body d-flex align-items-center gap-4">
+              <div class="donut-placeholder flex-shrink-0"></div>
+              <div style="font-size:0.8rem;display:flex;flex-direction:column;gap:8px;">
+                <div class="d-flex align-items-center gap-2"><div class="legend-dot" style="background:#1a7341;"></div>General (40%)</div>
+                <div class="d-flex align-items-center gap-2"><div class="legend-dot" style="background:#22c55e;"></div>VIP (25%)</div>
+                <div class="d-flex align-items-center gap-2"><div class="legend-dot" style="background:#86efac;"></div>Student (15%)</div>
+                <div class="d-flex align-items-center gap-2"><div class="legend-dot" style="background:#bbf7d0;"></div>Off Pass (20%)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Export Reports -->
+      <div class="org-card">
+        <div class="org-card-header"><h6>Export Reports</h6></div>
+        <div class="org-card-body d-flex flex-wrap gap-3">
+          <button class="btn btn-outline-secondary d-flex align-items-center gap-2">
+            <i data-lucide="download" style="width:14px;height:14px;"></i> Download CSV
+          </button>
+          <button class="btn btn-outline-secondary d-flex align-items-center gap-2">
+            <i data-lucide="download" style="width:14px;height:14px;"></i> Download PDF
+          </button>
+          <button class="btn btn-outline-secondary d-flex align-items-center gap-2">
+            <i data-lucide="download" style="width:14px;height:14px;"></i> Download Excel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

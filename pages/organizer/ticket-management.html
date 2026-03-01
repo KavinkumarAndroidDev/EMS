@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ticket Management - SyncEvent Organizer</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/x-icon">
+  
+</head>
+<body>
+<div class="organizer-layout">
+  <aside class="organizer-sidebar">
+    <div class="sidebar-brand"><img src="../../assets/logo.SVG" alt="SyncEvent"></div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="sidebar-nav-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+      <a href="my-events.html" class="sidebar-nav-item"><i data-lucide="calendar-days"></i> My Events</a>
+      <a href="create-event.html" class="sidebar-nav-item"><i data-lucide="plus-circle"></i> Create Event</a>
+      <a href="ticket-management.html" class="sidebar-nav-item active"><i data-lucide="ticket"></i> Ticket Management</a>
+      <a href="registrations.html" class="sidebar-nav-item"><i data-lucide="users"></i> Registrations</a>
+      <a href="reports.html" class="sidebar-nav-item"><i data-lucide="bar-chart-2"></i> Reports</a>
+      <a href="notifications.html" class="sidebar-nav-item"><i data-lucide="bell"></i> Notifications<span class="badge bg-danger ms-auto" style="font-size:0.65rem;padding:2px 6px;border-radius:10px;">3</span></a>
+      <a href="profile.html" class="sidebar-nav-item"><i data-lucide="user-circle"></i> Profile</a>
+    </nav>
+    <div class="sidebar-footer"><a href="#" class="sidebar-nav-item text-danger"><i data-lucide="log-out"></i> Logout</a></div>
+  </aside>
+
+  <div class="organizer-main">
+    <div class="organizer-topbar">
+      <h5>Ticket Management</h5>
+      <div class="topbar-user">
+        <div class="user-avatar">JD</div>
+        <div class="user-info">
+          <div class="name">John Doe</div>
+          <div class="role">Organizer</div>
+        </div>
+        <i data-lucide="chevron-down" style="width:14px;height:14px;color:#6c757d;"></i><div style="font-size:0.75rem;color:#6c757d;line-height:1.2;">Organizer</div></div>
+        <i data-lucide="chevron-down" style="width:14px;height:14px;color:#6c757d;"></i>
+      </div>
+    </div>
+
+    <div class="organizer-content">
+      <div class="d-flex align-items-start justify-content-between mb-4 flex-wrap gap-2">
+        <div>
+          <h4 class="fw-bold mb-1" style="font-size:1.1rem;">Ticket Management</h4>
+          <p class="text-neutral-400 mb-0" style="font-size:0.85rem;">Manage ticket types and pricing for your events</p>
+        </div>
+      </div>
+
+      <!-- Event Selector -->
+      <div class="org-card">
+        <div class="org-card-header"><h6>Select Event</h6></div>
+        <div class="p-3">
+          <div class="row g-3 align-items-end">
+            <div class="col-md-6">
+              <label class="form-label" style="font-size:0.82rem;font-weight:600;">Event Name</label>
+              <select class="form-select">
+                <option>Tech Conference 2026</option>
+                <option>Music Festival Summer</option>
+                <option>Art Exhibition Opening</option>
+                <option>Business Networking Event</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2">
+                <i data-lucide="plus" style="width:15px;height:15px;"></i> Add Ticket Type
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ticket Types Table -->
+      <div class="org-card">
+        <div class="org-card-header">
+          <h6>Ticket Types</h6>
+          <span style="font-size:0.78rem;color:#6c757d;">Tech Conference 2026</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="organizer-table">
+            <thead>
+              <tr>
+                <th>Ticket Type</th>
+                <th>Price(₹)</th>
+                <th>Total Quantity</th>
+                <th>Sold</th>
+                <th>Available</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="fw-medium">Early Bird</div>
+                  <div style="font-size:0.75rem;color:#6c757d;">Limited availability</div>
+                </td>
+                <td>₹500</td>
+                <td>
+                  <div>100</div>
+                  <div class="progress-bar-custom mt-1" style="width:80px;"><div class="progress-bar-fill" style="width:80%"></div></div>
+                </td>
+                <td>80</td>
+                <td>20</td>
+                <td>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-secondary px-2 py-1"><i data-lucide="pencil" style="width:12px;height:12px;"></i></button>
+                    <button class="btn btn-sm btn-outline-danger px-2 py-1"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="fw-medium">Off Pass</div>
+                </td>
+                <td>₹0</td>
+                <td>
+                  <div>80</div>
+                  <div class="progress-bar-custom mt-1" style="width:80px;"><div class="progress-bar-fill" style="width:50%"></div></div>
+                </td>
+                <td>40</td>
+                <td>40</td>
+                <td>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-secondary px-2 py-1"><i data-lucide="pencil" style="width:12px;height:12px;"></i></button>
+                    <button class="btn btn-sm btn-outline-danger px-2 py-1"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="fw-medium">Student Ticket</div>
+                </td>
+                <td>₹250</td>
+                <td>
+                  <div>120</div>
+                  <div class="progress-bar-custom mt-1" style="width:80px;"><div class="progress-bar-fill" style="width:33%"></div></div>
+                </td>
+                <td>40</td>
+                <td>80</td>
+                <td>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-outline-secondary px-2 py-1"><i data-lucide="pencil" style="width:12px;height:12px;"></i></button>
+                    <button class="btn btn-sm btn-outline-danger px-2 py-1"><i data-lucide="trash-2" style="width:12px;height:12px;"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="stat-foot">
+          <div class="d-flex gap-4">
+            <span>Total Tickets: <span class="val">300</span></span>
+            <span>Ticket Sold: <span class="val">160</span></span>
+          </div>
+          <span>Estimated Revenue: <span class="val" style="color:#1a7341;">₹15,750</span></span>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-success d-flex align-items-center gap-2">
+          <i data-lucide="save" style="width:15px;height:15px;"></i> Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
