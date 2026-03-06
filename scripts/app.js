@@ -84,8 +84,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Profile
     if (path.includes('/profile')) {
         const { initProfilePage } = await import('./features/profile/profile.js');
-        document.addEventListener('dataLoaded', () => {
-            initProfilePage();
+        import('./shared/state.js').then(stateMod => {
+            if (stateMod.state && stateMod.state.users && stateMod.state.users.length > 0) {
+                initProfilePage();
+            } else {
+                document.addEventListener('dataLoaded', () => initProfilePage());
+            }
         });
     }
 

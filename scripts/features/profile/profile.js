@@ -66,26 +66,33 @@ export function initProfilePage() {
 
     document.getElementById('profile-email').value = user.profile.email;
     document.getElementById('profile-email').readOnly = true;
-    document.getElementById('profile-email').classList.add('bg-neutral-50', 'text-neutral-500');
+    document.getElementById('profile-email').classList.add('form-control-readonly');
 
     document.getElementById('profile-phone').value = user.profile.phone || '';
     document.getElementById('profile-phone').readOnly = true;
-    document.getElementById('profile-phone').classList.add('bg-neutral-50', 'text-neutral-500');
+    document.getElementById('profile-phone').classList.add('form-control-readonly');
     document.getElementById('profile-fullname').value = user.profile.fullName;
     document.getElementById('profile-dob').value = user.profile.dateOfBirth || '';
     if (user.profile.gender) document.getElementById('profile-gender').value = user.profile.gender;
 
     // Profile Completion Calculation
     const fieldsToTrack = ['fullName', 'email', 'phone', 'dateOfBirth', 'gender', 'profileImage'];
-    const completedFields = fieldsToTrack.filter(field => user.profile[field] && String(user.profile[field]).trim() !== '');
+    const completedFields = fieldsToTrack.filter(field => {
+        const val = user.profile[field];
+        return val && String(val).trim() !== '' && val !== 'null' && val !== 'undefined';
+    });
     const completionPercentage = Math.round((completedFields.length / fieldsToTrack.length) * 100);
 
     const completionWidget = document.getElementById('profile-completion-widget');
+    const completionTitle = document.getElementById('profile-completion-title');
     if (completionWidget) {
         if (completionPercentage === 100) {
-            completionWidget.classList.add('d-none');
+            completionWidget.classList.add('d-none'); // Hide if complete as per requirement
+            if (completionTitle) completionTitle.textContent = "Profile 100% Complete";
         } else {
             completionWidget.classList.remove('d-none');
+            completionWidget.classList.remove('completed-state');
+            if (completionTitle) completionTitle.textContent = "Complete Your Profile";
             const percentText = document.getElementById('profile-completion-text');
             const progressBar = document.getElementById('profile-completion-bar');
             if (percentText) percentText.textContent = `${completionPercentage}%`;
@@ -93,16 +100,23 @@ export function initProfilePage() {
         }
     }
 
+    // Hide loader and show content
+    const overlay = document.getElementById('profile-loading-overlay');
+    const contentArea = document.getElementById('profile-content-area');
+    if (overlay) overlay.style.opacity = '0';
+    setTimeout(() => {
+        if (overlay) overlay.remove();
+        if (contentArea) contentArea.classList.remove('opacity-0');
+    }, 400);
+
     // Sidebar Navigation
-    const navLinks = document.querySelectorAll('.nav-link[data-section]');
+    const navLinks = document.querySelectorAll('.sidebar-item[data-section]');
     function switchSection(section) {
         navLinks.forEach(link => {
             if (link.dataset.section === section) {
-                link.classList.add('active-nav-item', 'text-primary');
-                link.classList.remove('text-neutral-900', 'hover-bg-neutral-50');
+                link.classList.add('active');
             } else {
-                link.classList.remove('active-nav-item', 'text-primary');
-                link.classList.add('text-neutral-900', 'hover-bg-neutral-50');
+                link.classList.remove('active');
             }
         });
 
@@ -360,30 +374,46 @@ function renderRegistrations() {
                 date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
             const isCancelled = reg.status === 'CANCELLED';
             return `
-            <div class="card-custom p-3 registration-card ${isCancelled ? 'cancelled' : ''}" data-id="${reg.id}" style="cursor: pointer;">
-                <div class="d-flex gap-3">
-                    <img src="${reg.img}" class="rounded-3 object-fit-cover d-none d-sm-block" style="width: 120px; height: 90px;" alt="${reg.eventName}">
-                    <div class="flex-grow-1">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <div>
-                                <h6 class="fw-bold mb-1 text-neutral-900">${reg.eventName}</h6>
-                                <div class="small text-neutral-400 mb-1"><i data-lucide="calendar" width="14" class="me-1"></i> ${dateStr}</div>
-                                <div class="small text-neutral-400"><i data-lucide="map-pin" width="14" class="me-1"></i> ${reg.location}</div>
+            <div class="card card-custom border-0 shadow-sm mb-3 registration-card ${isCancelled ? 'opacity-75' : ''}" data-id="${reg.id}" style="border-radius: 16px; transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="card-body p-3">
+                        <div class="d-flex flex-column flex-md-row gap-3">
+                            <div class="position-relative">
+                                <img src="${reg.img}" class="rounded-3 object-fit-cover" style="width: 140px; height: 100px; aspect-ratio: 1.4;" alt="${reg.eventName}">
+                                    ${isCancelled ? '<div class="position-absolute top-50 start-50 translate-middle badge bg-dark bg-opacity-50 px-2 py-1 rounded-pill">Cancelled</div>' : ''}
                             </div>
-                            <div class="d-flex gap-2">
-                                ${isCancelled
-                    ? `<span class="badge bg-danger-subtle text-danger rounded-pill px-3 align-self-center">Cancelled</span>`
-                    : `<button class="btn btn-outline-danger btn-sm rounded-pill px-3 btn-cancel-reg" data-id="${reg.id}">Cancel</button>`
-                }
+                            <div class="flex-grow-1">
+                                <div class="d-flex justify-content-between align-items-start mb-1">
+                                    <h6 class="fw-bold mb-0 text-neutral-900 fs-5">${reg.eventName}</h6>
+                                    ${!isCancelled ? '<span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1 fw-medium" style="font-size: 0.75rem;">Confirmed</span>' : ''}
+                                </div>
+
+                                <div class="d-flex flex-wrap gap-3 mb-3">
+                                    <span class="small text-neutral-400 d-flex align-items-center gap-1">
+                                        <i data-lucide="calendar" width="14"></i> ${dateStr}
+                                    </span>
+                                    <span class="small text-neutral-400 d-flex align-items-center gap-1">
+                                        <i data-lucide="map-pin" width="14"></i> ${reg.location}
+                                    </span>
+                                    <span class="small text-neutral-500 fw-medium bg-neutral-100 px-2 py-0.5 rounded">${reg.quantity} x ${reg.ticketType}</span>
+                                </div>
+
+                                <div class="d-flex align-items-center justify-content-between pt-3 border-top border-neutral-100">
+                                    <div class="fw-bold text-neutral-900 fs-5">₹${reg.price}</div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        ${!isCancelled ? `
+                                        <button class="btn btn-link text-danger p-0 small text-decoration-none btn-cancel-reg" data-id="${reg.id}" style="font-size: 0.85rem;">Cancel Booking</button>
+                                        <button class="btn btn-primary rounded-pill px-4 py-2 btn-view-pass d-flex align-items-center gap-2" data-id="${reg.id}" style="font-size: 0.9rem;">
+                                            View Pass <i data-lucide="external-link" width="16"></i>
+                                        </button>
+                                    ` : `
+                                        <span class="small text-neutral-400 italic">Reference: #${reg.id.substring(0, 8).toUpperCase()}</span>
+                                    `}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mt-2 pt-2 border-top border-neutral-100">
-                            <div class="small text-neutral-600">${reg.quantity} x ${reg.ticketType}</div>
-                            <div class="fw-bold text-primary">₹${reg.price}</div>
                         </div>
                     </div>
-                </div>
-            </div>`;
+            </div > `;
         },
         onRender: () => {
             if (window.initIcons) window.initIcons();
@@ -394,11 +424,10 @@ function renderRegistrations() {
                 });
             });
 
-            // Make the entire card clickable to view the pass, unless they click a button
-            document.querySelectorAll('#registrations-list .registration-card').forEach(card => {
-                card.addEventListener('click', (e) => {
-                    if (e.target.closest('button')) return;
-                    const reg = state.registrations.find(r => r.id === card.dataset.id);
+            // View Pass click handler
+            document.querySelectorAll('.btn-view-pass').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const reg = state.registrations.find(r => r.id == btn.dataset.id);
                     if (reg) openRegistrationModal(reg);
                 });
             });
@@ -411,7 +440,7 @@ function openRegistrationModal(reg) {
     if (!modalEl) return;
 
     document.getElementById('reg-modal-event').textContent = reg.eventName;
-    document.getElementById('reg-modal-id').textContent = `#${reg.id.substring(0, 8).toUpperCase()}`;
+    document.getElementById('reg-modal-id').textContent = `#${reg.id.substring(0, 8).toUpperCase()} `;
 
     // date
     const date = new Date(reg.date);
@@ -419,7 +448,7 @@ function openRegistrationModal(reg) {
 
     document.getElementById('reg-modal-venue').textContent = reg.location;
     document.getElementById('reg-modal-ticket-type').textContent = `${reg.ticketType} (${reg.quantity}x)`;
-    document.getElementById('reg-modal-amount').textContent = `₹${reg.price}`;
+    document.getElementById('reg-modal-amount').textContent = `₹${reg.price} `;
 
     const statusBadge = document.getElementById('reg-modal-status');
     if (reg.status === 'CANCELLED') {
@@ -455,7 +484,7 @@ function openCancelModal(reg) {
     document.getElementById('cancel-event-name').textContent = reg.eventName;
     document.getElementById('cancel-original-price').textContent = `₹${reg.price}`;
     const fee = Math.round(reg.price * 0.20);
-    const refund = reg.price - fee;
+    const refund = Math.round(reg.price - fee);
     document.getElementById('cancel-fee').textContent = `-₹${fee}`;
     document.getElementById('cancel-refund').textContent = `₹${refund}`;
 
@@ -473,14 +502,19 @@ function openCancelModal(reg) {
         }).catch(err => console.error("Error updating local db", err));
 
         // Correlate and Process Refund on Payment
-        const payment = state.payments.find(p => p.userId === reg.userId && p.eventId === reg.eventId && p.status === 'Confirmed');
+        const payment = state.payments.find(p => p.userId == reg.userId && p.eventId == reg.eventId && p.status === 'Confirmed');
         if (payment) {
             payment.status = 'Refunded';
             fetch(`http://localhost:3000/payments/${payment.id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: 'Refunded' })
-            }).catch(err => console.error("Error updating local db", err));
+            })
+                .then(res => {
+                    if (!res.ok) throw new Error("Payment update failed");
+                    console.log("Payment marked as refunded in DB");
+                })
+                .catch(err => console.error("Error updating local db", err));
         }
 
         modal.hide();
@@ -502,8 +536,15 @@ function renderPastEvents() {
     const user = userStr ? JSON.parse(userStr) : null;
     const userId = user ? user.id : null;
 
-    // Filter for past events
-    const pastEvents = state.registrations.filter(r => r.userId === userId && (r.status === 'COMPLETED' || r.status === 'CANCELLED'));
+    // Filter for past events and deduplicate by eventId
+    const seenEventIds = new Set();
+    const pastEvents = state.registrations
+        .filter(r => r.userId === userId && (r.status === 'COMPLETED' || r.status === 'CANCELLED'))
+        .filter(r => {
+            if (seenEventIds.has(r.eventId)) return false;
+            seenEventIds.add(r.eventId);
+            return true;
+        });
 
     setupGenericPagination({
         items: pastEvents,
@@ -513,21 +554,37 @@ function renderPastEvents() {
         renderItem: (evt) => {
             const date = new Date(evt.date);
             const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            const hasFeedback = evt.feedback && evt.rating > 0;
             return `
-            <div class="card-custom p-3 bg-neutral-50 border-neutral-100">
-                <div class="d-flex gap-3">
-                    <img src="${evt.img}" class="rounded-3 object-fit-cover d-none d-sm-block" style="width: 120px; height: 90px; filter: grayscale(100%);" alt="${evt.eventName}">
-                    <div class="flex-grow-1">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <div>
-                                <h6 class="fw-bold mb-1 text-neutral-900">${evt.eventName}</h6>
-                                <div class="small text-neutral-400 mb-1"><i data-lucide="calendar" width="14" class="me-1"></i> ${dateStr}</div>
-                                <div class="small text-neutral-400"><i data-lucide="map-pin" width="14" class="me-1"></i> ${evt.location}</div>
+            <div class="card card-custom border-0 shadow-sm mb-3 past-event-card" style="border-radius: 12px; transition: all 0.2s;">
+                <div class="card-body p-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="${evt.img}" class="rounded-3 object-fit-cover" style="width: 80px; height: 80px; min-width: 80px; filter: grayscale(40%);" alt="${evt.eventName}">
+                        <div class="flex-grow-1 overflow-hidden">
+                            <div class="d-flex justify-content-between align-items-start mb-1">
+                                <h6 class="fw-bold mb-0 text-neutral-900 text-truncate" style="font-size: 1rem;">${evt.eventName}</h6>
+                                <span class="badge bg-neutral-100 text-neutral-500 rounded-pill px-2 py-1 fw-medium" style="font-size: 0.7rem;">Completed</span>
                             </div>
-                            ${evt.feedbackSubmitted
-                    ? `<div class="d-flex align-items-center gap-1 text-success small fw-medium bg-white px-3 py-1 rounded-pill border border-neutral-100"><i data-lucide="check-circle" width="14"></i> Rated: ${'★'.repeat(evt.rating)}</div>`
-                    : `<button class="btn btn-outline-primary btn-sm rounded-pill px-3 btn-feedback" data-id="${evt.id}">Submit Feedback</button>`
-                }
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <span class="small text-neutral-400 d-flex align-items-center gap-1">
+                                    <i data-lucide="calendar" width="12"></i> ${dateStr}
+                                </span>
+                                <span class="small text-neutral-500 fw-medium bg-neutral-50 px-2 rounded" style="font-size: 0.75rem;">${evt.quantity} x ${evt.ticketType}</span>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between pt-2 border-top border-neutral-50">
+                                <div class="small fw-bold text-neutral-800">Total: ₹${evt.price}</div>
+                                ${evt.feedbackSubmitted ? `
+                                    <div class="d-flex align-items-center text-warning gap-1 small">
+                                        <i data-lucide="star" class="fill-warning" width="12"></i>
+                                        <span class="fw-bold">${evt.rating}</span>
+                                    </div>
+                                ` : `
+                                    <button class="btn btn-outline-primary btn-sm rounded-pill px-3 py-1 btn-feedback" data-id="${evt.id}" style="font-size: 0.75rem;">
+                                        Review Event
+                                    </button>
+                                `}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -536,7 +593,7 @@ function renderPastEvents() {
         onRender: () => {
             document.querySelectorAll('.btn-feedback').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const evt = state.registrations.find(e => e.id === btn.dataset.id);
+                    const evt = state.registrations.find(e => e.id == btn.dataset.id);
                     if (evt) openFeedbackModal(evt);
                 });
             });
@@ -599,25 +656,42 @@ function renderPayments() {
             const dateStr = date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
 
             let badgeClass = '';
-            if (pay.status === 'Confirmed') badgeClass = 'border-success text-success';
-            else if (pay.status === 'Refunded') badgeClass = 'border-warning text-warning';
-            else if (pay.status === 'Failed') badgeClass = 'border-danger text-danger';
+            let statusText = pay.status;
+            if (pay.status === 'Confirmed') {
+                badgeClass = 'bg-success-subtle text-success border-success-subtle';
+            } else if (pay.status === 'Refunded') {
+                badgeClass = 'bg-neutral-100 text-neutral-500 border-neutral-200';
+            } else {
+                badgeClass = 'bg-danger-subtle text-danger border-danger-subtle';
+            }
 
             return `
-            <div class="card-custom p-4">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex flex-column gap-1">
-                        <h5 class="fw-semibold text-neutral-900 mb-1">${pay.eventTitle}</h5>
-                        <div class="small text-neutral-600">${dateStr}</div>
-                        <div class="small text-neutral-600">${pay.tickets}</div>
-                        <div class="fw-medium text-neutral-900 mt-1">${pay.method}</div>
-                        <button class="btn btn-link text-primary p-0 text-start mt-2 btn-view-invoice fw-medium text-decoration-none" data-id="${pay.id}">View Invoice <i data-lucide="arrow-right" width="14" class="ms-1"></i></button>
+            <div class="card card-custom border-0 shadow-sm mb-3 payment-card" style="border-radius: 12px; transition: all 0.2s;">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-3 d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+                                <i data-lucide="credit-card" width="18"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-0 text-neutral-900" style="font-size: 0.95rem;">${pay.eventName || pay.eventTitle}</h6>
+                                <small class="text-neutral-400">ID: #${pay.id.toUpperCase().substring(0, 8)}</small>
+                            </div>
+                        </div>
+                        <span class="badge ${badgeClass} border rounded-pill px-2 py-1 fw-medium" style="font-size: 0.7rem;">${statusText}</span>
                     </div>
-                    <div class="text-end">
-                        <div class="fs-5 fw-semibold text-neutral-900 mb-3">₹${pay.amount}</div>
-                        <span class="badge rounded-pill bg-transparent border ${badgeClass} px-3 py-2 fw-medium" style="font-size: 0.875rem;">
-                            ${pay.status}
-                        </span>
+
+                    <div class="d-flex align-items-center justify-content-between mt-3 pt-2 border-top border-neutral-50">
+                        <div>
+                            <div class="small text-neutral-400">Amount Paid</div>
+                            <div class="fw-bold text-neutral-900 fs-5">₹${pay.amount}</div>
+                        </div>
+                        <div class="text-end">
+                            <div class="small text-neutral-400">${dateStr}</div>
+                            <button class="btn btn-link text-primary p-0 small text-decoration-none btn-view-invoice mt-1" data-id="${pay.id}">
+                                View Invoice <i data-lucide="chevron-right" width="14"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>`;
@@ -626,7 +700,7 @@ function renderPayments() {
             if (window.initIcons) window.initIcons();
             document.querySelectorAll('.btn-view-invoice').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const pay = state.payments.find(p => p.id === btn.dataset.id);
+                    const pay = state.payments.find(p => p.id == btn.dataset.id);
                     if (pay) openPaymentModal(pay);
                 });
             });
@@ -644,9 +718,17 @@ function openPaymentModal(pay) {
 
     const date = new Date(pay.date);
     document.getElementById('pay-modal-date').textContent = date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
-    document.getElementById('pay-modal-event').textContent = pay.eventTitle;
-    document.getElementById('pay-modal-method').textContent = pay.method;
-    document.getElementById('pay-modal-booking').textContent = pay.bookingId ? `#${pay.bookingId.substring(0, 8).toUpperCase()}` : 'N/A';
+
+    // Find event title from state if missing in pay object
+    let eventTitle = pay.eventTitle || pay.eventName;
+    if (!eventTitle && pay.eventId) {
+        const evt = state.events.find(e => String(e.id) === String(pay.eventId));
+        if (evt) eventTitle = evt.title;
+    }
+    document.getElementById('pay-modal-event').textContent = eventTitle || 'Event Details';
+
+    document.getElementById('pay-modal-method').textContent = pay.method || 'Credit/Debit Card';
+    document.getElementById('pay-modal-booking').textContent = pay.bookingId ? `#${String(pay.bookingId).toUpperCase().substring(0, 8)}` : 'N/A';
 
     const statusBadge = document.getElementById('pay-modal-status');
     if (pay.status === 'Confirmed') {

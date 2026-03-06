@@ -157,7 +157,8 @@ export function setupGenericPagination({ items, containerId, paginationId, rende
         html += `<button class="pagination-btn" data-page="${page + 1}" ${page === totalPages ? 'disabled' : ''}><i data-lucide="chevron-right" width="16" height="16"></i></button>`;
 
         paginationContainer.innerHTML = html;
-        if (window.initIcons) window.initIcons();
+        if (window.initIcons) window.initIcons({ root: paginationContainer });
+        else if (window.lucide) window.lucide.createIcons({ root: paginationContainer });
     };
 
     paginationContainer.addEventListener('click', (e) => {

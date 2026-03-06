@@ -36,6 +36,32 @@
   font-weight: 500;
 }
 
+.navbar-nav .nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+  padding: 0.5rem 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: $primary;
+    transition: width 0.3s ease;
+  }
+
+  &:hover,
+  &.active {
+    color: $primary !important;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
 .icon-circle {
   width: 2.5rem;
   height: 2.5rem;
@@ -168,6 +194,7 @@
     align-items: flex-start;
   }
 }
+
 // --- Premium Sidebar Component ---
 .sidebar-item {
   display: flex;
@@ -194,7 +221,7 @@
   &:hover {
     background-color: $gray-50;
     color: $gray-900;
-    
+
     .sidebar-icon {
       color: $gray-600;
     }

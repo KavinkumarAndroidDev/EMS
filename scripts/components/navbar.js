@@ -12,16 +12,21 @@ export function injectComponents() {
   const userStr = localStorage.getItem('currentUser');
   const user = userStr ? JSON.parse(userStr) : null;
 
-  injectHeader(rootPath, user);
+  injectHeader(rootPath, user, path);
   injectOrganizerCTA(rootPath);
   injectFooter(rootPath);
 
   if (window.initIcons) window.initIcons();
 }
 
-function injectHeader(rootPath, user) {
+function injectHeader(rootPath, user, currentPath) {
   const header = document.querySelector('.site-header');
   if (!header) return;
+
+  const isHome = currentPath === '/' || (currentPath.endsWith('/index.html') && !currentPath.includes('/pages/'));
+  const isEvents = currentPath.includes('/pages/events/');
+  const isAbout = currentPath.includes('/pages/about/index.html');
+  const isContact = currentPath.includes('/pages/about/contact.html');
 
   let rightContent = '';
 
@@ -79,16 +84,16 @@ function injectHeader(rootPath, user) {
             <!-- Centered Links -->
             <ul class="navbar-nav mx-auto mb-3 mb-lg-0 gap-1 gap-lg-3 text-center mt-3 mt-lg-0">
                 <li class="nav-item">
-                    <a href="${rootPath}index.html" class="nav-link text-neutral-900 fw-medium">Home</a>
+                    <a href="${rootPath}index.html" class="nav-link text-neutral-900 fw-medium ${isHome ? 'active' : ''}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="${rootPath}pages/events/index.html" class="nav-link text-neutral-900 fw-medium">Events</a>
+                    <a href="${rootPath}pages/events/index.html" class="nav-link text-neutral-900 fw-medium ${isEvents ? 'active' : ''}">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a href="${rootPath}pages/about/index.html" class="nav-link text-neutral-900 fw-medium">About</a>
+                    <a href="${rootPath}pages/about/index.html" class="nav-link text-neutral-900 fw-medium ${isAbout ? 'active' : ''}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="${rootPath}pages/about/contact.html" class="nav-link text-neutral-900 fw-medium">Contact</a>
+                    <a href="${rootPath}pages/about/contact.html" class="nav-link text-neutral-900 fw-medium ${isContact ? 'active' : ''}">Contact</a>
                 </li>
             </ul>
             
