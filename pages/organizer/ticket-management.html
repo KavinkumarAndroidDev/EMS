@@ -193,10 +193,17 @@
                                         <td class="text-neutral-900 fw-medium">75</td>
                                         <td class="text-neutral-900 fw-medium">25</td>
                                         <td class="pe-4 text-end">
-                                            <button class="btn btn-link text-danger p-1 border-0"
-                                                onclick="this.closest('tr').remove()">
-                                                <i data-lucide="trash-2" style="width:18px;height:18px;"></i>
-                                            </button>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-icon border-0 p-0 text-neutral-400 shadow-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i data-lucide="more-vertical" width="18"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 py-2" style="font-size: 13px; min-width: 140px;">
+                                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i data-lucide="eye" width="14"></i> View Details</a></li>
+                                                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i data-lucide="copy" width="14"></i> Duplicate</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#" onclick="this.closest('tr').remove()"><i data-lucide="trash-2" width="14"></i> Delete Type</a></li>
+                                                </ul>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -258,9 +265,17 @@
                 <td class="text-neutral-900 fw-medium">0</td>
                 <td class="text-neutral-900 fw-medium">0</td>
                 <td class="pe-4 text-end">
-                    <button class="btn btn-link text-danger p-1 border-0" onclick="this.closest('tr').remove()">
-                        <i data-lucide="trash-2" style="width:18px;height:18px;"></i>
-                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-icon border-0 p-0 text-neutral-400 shadow-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i data-lucide="more-vertical" width="18"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 py-2" style="font-size: 13px; min-width: 140px;">
+                            <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i data-lucide="eye" width="14"></i> View Details</a></li>
+                            <li><a class="dropdown-item d-flex align-items-center gap-2" href="#"><i data-lucide="copy" width="14"></i> Duplicate</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item d-flex align-items-center gap-2 text-danger" href="#" onclick="this.closest('tr').remove()"><i data-lucide="trash-2" width="14"></i> Delete Type</a></li>
+                        </ul>
+                    </div>
                 </td>`;
             tbody.appendChild(row);
             if (window.initIcons) window.initIcons();
