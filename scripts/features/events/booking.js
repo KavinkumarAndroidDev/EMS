@@ -488,7 +488,7 @@ export function initBookingPage() {
 
             // Configure Razorpay Option
             const options = {
-                "key": "rzp_test_SL5XMJTbrtdBjR",
+                "key": "XXXXXX", //replace with your Razorpay key
                 "amount": Math.round(totalAmount * 100), // in paise
                 "currency": "INR",
                 "name": "SyncEvent",
